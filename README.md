@@ -150,8 +150,12 @@ The golden tests run the executable against the fixture suite in `test/fixtures/
 
 ## Credits
 
-The SCRAP algorithm, its metrics and its policy numbers are by Robert C. Martin: https://github.com/unclebob/scrap. scrap4rb is an independent Ruby implementation.
+SCRAP is by Robert C. Martin (Uncle Bob): [github.com/unclebob/scrap](https://github.com/unclebob/scrap). The algorithm, the metrics, the smells and the policy numbers in scrap4rb come from SCRAP. scrap4rb is an independent Ruby implementation. It contains no SCRAP source code.
+
+scrap4rb 0.1.0 follows SCRAP at commit [`f793b28`](https://github.com/unclebob/scrap/tree/f793b28906d3c60e30b128e1ec08df6269a72b13) (2026-03-17). When SCRAP changes its rules or numbers, scrap4rb can differ until it follows again.
+
+Related tools by the same author: [crap4clj](https://github.com/unclebob/crap4clj), [crap4java](https://github.com/unclebob/crap4java), [crap4go](https://github.com/unclebob/crap4go) and [clj-mutate](https://github.com/unclebob/clj-mutate).
 
 ## License
 
-MIT. See [LICENSE](LICENSE).
+scrap4rb is released under the MIT License. See [LICENSE](LICENSE). The license covers the code in this repository. It does not cover SCRAP itself.
