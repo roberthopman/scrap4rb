@@ -19,11 +19,11 @@ test/models/matrix_test.rb
     1.0  L20   the table form covers the same borders                     
 
 test/models/smelly_test.rb
-  score 47.35 HIGH  mode LOCAL  ai AUTO_REFACTOR  tests=6 avg=10.61 max=18.26
+  score 47.95 HIGH  mode LOCAL  ai AUTO_REFACTOR  tests=6 avg=11.11 max=18.26
   HIGH   Strengthen assertions in weak tests before doing structural cleanup.
   LOW    Be skeptical of helper extraction that only hides setup; helper-hidden complexity should still count as complexity.
    18.3  L60   it uses a long local helper                                low-assertion-density,helper-hidden-complexity
-   14.3  L36   it handles a large payload                                 low-assertion-density
+   17.3  L36   it handles a large payload                                 low-assertion-density,literal-heavy-setup
    12.3  L14   it syncs everything through the api                        high-mocking
    10.0  L25   it walks the whole flow                                    multiple-phases
     8.0  L53   it writes an export file                                   temp-resource-work
@@ -45,5 +45,5 @@ Comparison with baseline.json:
 modes:   LOCAL=4 STABLE=2
 ai:      AUTO_REFACTOR=3 AUTO_TABLE_DRIVE=1 LEAVE_ALONE=2
 levels:  HIGH=1 LOW=2 MEDIUM=1 STABLE=2
-smells:  low-assertion-density=2 high-mocking=1 multiple-phases=1 temp-resource-work=1 helper-hidden-complexity=1
+smells:  low-assertion-density=2 high-mocking=1 multiple-phases=1 literal-heavy-setup=1 temp-resource-work=1 helper-hidden-complexity=1
 extractions recommended: 1, table-drive candidates: 5

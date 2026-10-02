@@ -75,6 +75,11 @@ class ExampleTest < Minitest::Test
     assert_includes six[:smells], "literal-heavy-setup"
   end
 
+  def test_a_plain_string_of_more_than_five_lines_is_literal_heavy_setup
+    refute_includes one("data = \"#{Array.new(5) { "l" }.join("\n")}\"\nassert data")[:smells], "literal-heavy-setup"
+    assert_includes one("data = \"#{Array.new(6) { "l" }.join("\n")}\"\nassert data")[:smells], "literal-heavy-setup"
+  end
+
   def test_a_hash_of_more_than_ten_pairs_is_literal_heavy_setup
     pairs = ->(n) { Array.new(n) { "k#{_1}: #{_1}" }.join(", ") }
     refute_includes one("h = { #{pairs.(10)} }\nassert h")[:smells], "literal-heavy-setup"

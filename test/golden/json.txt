@@ -1050,17 +1050,22 @@
           "[:sym, :sym]",
           "[:sym]"
         ],
-        "literal_signatures": [],
+        "literal_signatures": [
+          ":string"
+        ],
         "fixture_features": [
           "[:vec, :string]",
           ":vec",
           ":string"
         ],
-        "scrap": 14.26,
+        "scrap": 17.26,
         "smells": [
-          "low-assertion-density"
+          "low-assertion-density",
+          "literal-heavy-setup"
         ],
-        "literal_features": []
+        "literal_features": [
+          ":string"
+        ]
       },
       {
         "name": "it writes an export file",
@@ -1209,7 +1214,7 @@
     ],
     "summary": {
       "example_count": 6,
-      "avg_scrap": 12.28,
+      "avg_scrap": 12.78,
       "max_scrap": 18.26,
       "branching_examples": 1,
       "low_assertion_examples": 5,
@@ -1236,7 +1241,7 @@
       "effective_duplication_score": 0,
       "recommended_extractions": []
     },
-    "file_score": 47.86,
+    "file_score": 48.46,
     "level": "HIGH",
     "mode": "LOCAL",
     "ai": "AUTO_REFACTOR",

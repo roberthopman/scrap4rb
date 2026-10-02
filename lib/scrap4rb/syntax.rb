@@ -70,10 +70,17 @@ module Scrap4rb
 
     def large_literal?(node)
       case node
-      when Prism::StringNode, Prism::InterpolatedStringNode
-        node.opening_loc&.slice&.start_with?("<<") && node.slice.lines.size > 5
+      when Prism::StringNode, Prism::InterpolatedStringNode then string_line_count(node) > 5
       when Prism::HashNode, Prism::KeywordHashNode, Prism::ArrayNode then node.elements.size > 10
       else false
+      end
+    end
+
+    def string_line_count(node)
+      if node.opening_loc&.slice&.start_with?("<<") && node.closing_loc
+        node.closing_loc.start_line - node.opening_loc.start_line - 1
+      elsif node.is_a?(Prism::StringNode) then node.unescaped.lines.size
+      else lines_of(node)
       end
     end
 

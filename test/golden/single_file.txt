@@ -1,12 +1,12 @@
 
 test/models/smelly_test.rb
-  score 47.86 HIGH  mode LOCAL  ai AUTO_REFACTOR  tests=6 avg=12.28 max=18.26
+  score 48.46 HIGH  mode LOCAL  ai AUTO_REFACTOR  tests=6 avg=12.78 max=18.26
   HIGH   Convert repeated low-complexity tests into table-driven checks; treat this as coverage-matrix repetition, not harmful duplication.
   HIGH   Strengthen assertions in weak tests before doing structural cleanup.
   LOW    Be skeptical of helper extraction that only hides setup; helper-hidden complexity should still count as complexity.
   LOW    Consider splitting this file or block by responsibility.
    18.3  L59   it uses a long local helper                                low-assertion-density,helper-hidden-complexity
-   14.3  L35   it handles a large payload                                 low-assertion-density
+   17.3  L35   it handles a large payload                                 low-assertion-density,literal-heavy-setup
    12.3  L13   it syncs everything through the api                        high-mocking
    11.0  L8    it saves the record                                        no-assertions
    10.0  L24   it walks the whole flow                                    multiple-phases
@@ -15,5 +15,5 @@ test/models/smelly_test.rb
 modes:   LOCAL=1
 ai:      AUTO_REFACTOR=1
 levels:  HIGH=1
-smells:  low-assertion-density=2 no-assertions=1 high-mocking=1 multiple-phases=1 temp-resource-work=1 helper-hidden-complexity=1
+smells:  low-assertion-density=2 no-assertions=1 high-mocking=1 multiple-phases=1 literal-heavy-setup=1 temp-resource-work=1 helper-hidden-complexity=1
 extractions recommended: 0, table-drive candidates: 1
