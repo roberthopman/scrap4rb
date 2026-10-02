@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require "scrap4rb"
+
+Scrap4rb.main(ARGV)
