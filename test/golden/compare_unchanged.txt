@@ -1,0 +1,50 @@
+
+test/models/boundary_test.rb
+  score 30.67 MEDIUM  mode LOCAL  ai AUTO_REFACTOR  tests=3 avg=1.0 max=1.0
+  HIGH   Strengthen assertions in weak tests before doing structural cleanup.
+  MEDIUM Extract shared setup or repeated assertion scaffolding only where harmful duplication is dominating.
+    1.0  L4    hours above 168 are invalid                                
+    1.0  L9    negative hours are invalid                                 
+    1.0  L14   168 hours is the inclusive upper bound                     
+  EXTRACT L4-17 net=31.74 (I=3 shared=22 variable=0): hours above 168 are invalid | negative hours are invalid | 168 hours is the inclusive upper bound
+
+test/models/matrix_test.rb
+  score 15.8 LOW  mode LOCAL  ai AUTO_TABLE_DRIVE  tests=5 avg=1.0 max=1.0
+  HIGH   Convert repeated low-complexity tests into table-driven checks; treat this as coverage-matrix repetition, not harmful duplication.
+  HIGH   Strengthen assertions in weak tests before doing structural cleanup.
+    1.0  L4    5 mm has no surcharge                                      
+    1.0  L8    6 mm has the first surcharge                               
+    1.0  L12   10 mm keeps the first surcharge                            
+    1.0  L16   11 mm has the second surcharge                             
+    1.0  L20   the table form covers the same borders                     
+
+test/models/smelly_test.rb
+  score 47.86 HIGH  mode LOCAL  ai AUTO_REFACTOR  tests=6 avg=12.28 max=18.26
+  HIGH   Convert repeated low-complexity tests into table-driven checks; treat this as coverage-matrix repetition, not harmful duplication.
+  HIGH   Strengthen assertions in weak tests before doing structural cleanup.
+  LOW    Be skeptical of helper extraction that only hides setup; helper-hidden complexity should still count as complexity.
+  LOW    Consider splitting this file or block by responsibility.
+   18.3  L59   it uses a long local helper                                low-assertion-density,helper-hidden-complexity
+   14.3  L35   it handles a large payload                                 low-assertion-density
+   12.3  L13   it syncs everything through the api                        high-mocking
+   11.0  L8    it saves the record                                        no-assertions
+   10.0  L24   it walks the whole flow                                    multiple-phases
+
+test/models/structure_test.rb
+  ERROR line 5: (test) inside (test) at line 4
+  ERROR line 8: (setup) inside (test) at line 4
+  ERROR line 17: test_twice is defined again; line 13 never runs
+  score 14.17 LOW  mode LOCAL  ai AUTO_REFACTOR  tests=3 avg=1.0 max=1.0
+  HIGH   Strengthen assertions in weak tests before doing structural cleanup.
+    1.0  L4    an outer test                                              
+    1.0  L13   test_twice                                                 
+    1.0  L17   test_twice                                                 
+
+Comparison with baseline.json:
+
+6 files, 21 tests, 3 structure errors
+modes:   LOCAL=4 STABLE=2
+ai:      AUTO_REFACTOR=3 AUTO_TABLE_DRIVE=1 LEAVE_ALONE=2
+levels:  HIGH=1 LOW=2 MEDIUM=1 STABLE=2
+smells:  low-assertion-density=2 no-assertions=1 high-mocking=1 multiple-phases=1 temp-resource-work=1 helper-hidden-complexity=1
+extractions recommended: 1, table-drive candidates: 6

@@ -1,0 +1,27 @@
+# Built gem artifacts
+*.gem
+/pkg/
+
+# Bundler / dependencies
+/.bundle/
+/vendor/bundle/
+# A gem (library) ships a gemspec, not a lockfile — don't commit Gemfile.lock.
+Gemfile.lock
+
+# Test & coverage output
+/coverage/
+/tmp/
+
+# Generated API docs (note: our hand-written docs/ is NOT ignored)
+/.yardoc/
+/_yardoc/
+/doc/
+/rdoc/
+
+# Editor / OS cruft
+.DS_Store
+*.swp
+*~
+
+# Claude Code personal overrides (team-shared .claude/settings.json stays tracked)
+.claude/settings.local.json

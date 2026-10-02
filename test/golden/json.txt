@@ -1,0 +1,1624 @@
+[
+  {
+    "path": "test/models/boundary_test.rb",
+    "content_hash": "09009fcd980cfcc0",
+    "errors": [],
+    "examples": [
+      {
+        "name": "hours above 168 are invalid",
+        "describe_path": [
+          "BoundaryTest"
+        ],
+        "line": 4,
+        "end_line": 7,
+        "line_count": 4,
+        "raw_line_count": 4,
+        "assertions": 1,
+        "branches": 0,
+        "setup_depth": 0,
+        "with_redefs": 0,
+        "helper_calls": 0,
+        "helper_hidden_lines": 0,
+        "temp_resources": 0,
+        "table_driven": false,
+        "api_contract": true,
+        "phases": 1,
+        "complexity": 1,
+        "complexity_score": 1.0,
+        "subject_symbols": [
+          "Availability.new",
+          "employees",
+          "valid?"
+        ],
+        "assert_signatures": [
+          "[:sym, [[:sym, :sym]]]"
+        ],
+        "assert_features": [
+          "[:sym, [[:sym, :sym]]]",
+          ":sym",
+          "[[:sym, :sym]]",
+          "[:sym, :sym]"
+        ],
+        "setup_signatures": [],
+        "setup_features": [],
+        "arrange_signatures": [
+          "[:assign, :sym, [:sym, :sym, [[:hash, [:employee, [:sym, [:tim]]], [:hours, :number], [:week, :number], [:year, :number]]]]]"
+        ],
+        "arrange_features": [
+          "[:assign, :sym, [:sym, :sym, [[:hash, [:employee, [:sym, [:tim]]], [:hours, :number], [:week, :number], [:year, :number]]]]]",
+          ":assign",
+          ":sym",
+          "[:sym, :sym, [[:hash, [:employee, [:sym, [:tim]]], [:hours, :number], [:week, :number], [:year, :number]]]]",
+          "[[:hash, [:employee, [:sym, [:tim]]], [:hours, :number], [:week, :number], [:year, :number]]]",
+          "[:hash, [:employee, [:sym, [:tim]]], [:hours, :number], [:week, :number], [:year, :number]]",
+          ":hash",
+          "[:employee, [:sym, [:tim]]]",
+          ":employee",
+          "[:sym, [:tim]]",
+          "[:tim]",
+          ":tim",
+          "[:hours, :number]",
+          ":hours",
+          ":number",
+          "[:week, :number]",
+          ":week",
+          "[:year, :number]",
+          ":year"
+        ],
+        "literal_signatures": [],
+        "fixture_features": [],
+        "scrap": 1.0,
+        "smells": [],
+        "literal_features": []
+      },
+      {
+        "name": "negative hours are invalid",
+        "describe_path": [
+          "BoundaryTest"
+        ],
+        "line": 9,
+        "end_line": 12,
+        "line_count": 4,
+        "raw_line_count": 4,
+        "assertions": 1,
+        "branches": 0,
+        "setup_depth": 0,
+        "with_redefs": 0,
+        "helper_calls": 0,
+        "helper_hidden_lines": 0,
+        "temp_resources": 0,
+        "table_driven": false,
+        "api_contract": true,
+        "phases": 1,
+        "complexity": 1,
+        "complexity_score": 1.0,
+        "subject_symbols": [
+          "Availability.new",
+          "employees",
+          "valid?"
+        ],
+        "assert_signatures": [
+          "[:sym, [[:sym, :sym]]]"
+        ],
+        "assert_features": [
+          "[:sym, [[:sym, :sym]]]",
+          ":sym",
+          "[[:sym, :sym]]",
+          "[:sym, :sym]"
+        ],
+        "setup_signatures": [],
+        "setup_features": [],
+        "arrange_signatures": [
+          "[:assign, :sym, [:sym, :sym, [[:hash, [:employee, [:sym, [:tim]]], [:hours, :number], [:week, :number], [:year, :number]]]]]"
+        ],
+        "arrange_features": [
+          "[:assign, :sym, [:sym, :sym, [[:hash, [:employee, [:sym, [:tim]]], [:hours, :number], [:week, :number], [:year, :number]]]]]",
+          ":assign",
+          ":sym",
+          "[:sym, :sym, [[:hash, [:employee, [:sym, [:tim]]], [:hours, :number], [:week, :number], [:year, :number]]]]",
+          "[[:hash, [:employee, [:sym, [:tim]]], [:hours, :number], [:week, :number], [:year, :number]]]",
+          "[:hash, [:employee, [:sym, [:tim]]], [:hours, :number], [:week, :number], [:year, :number]]",
+          ":hash",
+          "[:employee, [:sym, [:tim]]]",
+          ":employee",
+          "[:sym, [:tim]]",
+          "[:tim]",
+          ":tim",
+          "[:hours, :number]",
+          ":hours",
+          ":number",
+          "[:week, :number]",
+          ":week",
+          "[:year, :number]",
+          ":year"
+        ],
+        "literal_signatures": [],
+        "fixture_features": [],
+        "scrap": 1.0,
+        "smells": [],
+        "literal_features": []
+      },
+      {
+        "name": "168 hours is the inclusive upper bound",
+        "describe_path": [
+          "BoundaryTest"
+        ],
+        "line": 14,
+        "end_line": 17,
+        "line_count": 4,
+        "raw_line_count": 4,
+        "assertions": 1,
+        "branches": 0,
+        "setup_depth": 0,
+        "with_redefs": 0,
+        "helper_calls": 0,
+        "helper_hidden_lines": 0,
+        "temp_resources": 0,
+        "table_driven": false,
+        "api_contract": true,
+        "phases": 1,
+        "complexity": 1,
+        "complexity_score": 1.0,
+        "subject_symbols": [
+          "Availability.new",
+          "employees",
+          "valid?"
+        ],
+        "assert_signatures": [
+          "[:sym, [[:sym, :sym]]]"
+        ],
+        "assert_features": [
+          "[:sym, [[:sym, :sym]]]",
+          ":sym",
+          "[[:sym, :sym]]",
+          "[:sym, :sym]"
+        ],
+        "setup_signatures": [],
+        "setup_features": [],
+        "arrange_signatures": [
+          "[:assign, :sym, [:sym, :sym, [[:hash, [:employee, [:sym, [:tim]]], [:hours, :number], [:week, :number], [:year, :number]]]]]"
+        ],
+        "arrange_features": [
+          "[:assign, :sym, [:sym, :sym, [[:hash, [:employee, [:sym, [:tim]]], [:hours, :number], [:week, :number], [:year, :number]]]]]",
+          ":assign",
+          ":sym",
+          "[:sym, :sym, [[:hash, [:employee, [:sym, [:tim]]], [:hours, :number], [:week, :number], [:year, :number]]]]",
+          "[[:hash, [:employee, [:sym, [:tim]]], [:hours, :number], [:week, :number], [:year, :number]]]",
+          "[:hash, [:employee, [:sym, [:tim]]], [:hours, :number], [:week, :number], [:year, :number]]",
+          ":hash",
+          "[:employee, [:sym, [:tim]]]",
+          ":employee",
+          "[:sym, [:tim]]",
+          "[:tim]",
+          ":tim",
+          "[:hours, :number]",
+          ":hours",
+          ":number",
+          "[:week, :number]",
+          ":week",
+          "[:year, :number]",
+          ":year"
+        ],
+        "literal_signatures": [],
+        "fixture_features": [],
+        "scrap": 1.0,
+        "smells": [],
+        "literal_features": []
+      }
+    ],
+    "summary": {
+      "example_count": 3,
+      "avg_scrap": 1.0,
+      "max_scrap": 1.0,
+      "branching_examples": 0,
+      "low_assertion_examples": 3,
+      "with_redefs_examples": 0,
+      "zero_assertion_examples": 0,
+      "helper_hidden_example_count": 0,
+      "table_driven_examples": 0,
+      "setup_duplication_score": 0,
+      "assertion_duplication_score": 3,
+      "fixture_duplication_score": 0,
+      "literal_duplication_score": 0,
+      "arrange_duplication_score": 3,
+      "subject_repetition_score": 3,
+      "duplication_score": 6,
+      "harmful_duplication_score": 6,
+      "avg_setup_similarity": 0.0,
+      "avg_assert_similarity": 1.0,
+      "avg_arrange_similarity": 1.0,
+      "avg_subject_similarity": 1.0,
+      "coverage_matrix_candidates": 0,
+      "case_matrix_repetition": 0,
+      "recommended_extraction_count": 1,
+      "extraction_pressure_score": 31.74,
+      "effective_duplication_score": 31.74,
+      "recommended_extractions": [
+        {
+          "examples": [
+            {
+              "name": "hours above 168 are invalid",
+              "line": 4,
+              "end_line": 7
+            },
+            {
+              "name": "negative hours are invalid",
+              "line": 9,
+              "end_line": 12
+            },
+            {
+              "name": "168 hours is the inclusive upper bound",
+              "line": 14,
+              "end_line": 17
+            }
+          ],
+          "line_start": 4,
+          "line_end": 17,
+          "instances": 3,
+          "shared_forms": 22,
+          "variable_points": 0,
+          "duplication_before": 53.74,
+          "helper_cost": 22,
+          "net_benefit": 31.74
+        }
+      ]
+    },
+    "file_score": 30.67,
+    "level": "MEDIUM",
+    "mode": "LOCAL",
+    "ai": "AUTO_REFACTOR",
+    "actions": [
+      [
+        3,
+        "Strengthen assertions in weak tests before doing structural cleanup."
+      ],
+      [
+        2,
+        "Extract shared setup or repeated assertion scaffolding only where harmful duplication is dominating."
+      ]
+    ]
+  },
+  {
+    "path": "test/models/clean_test.rb",
+    "content_hash": "fbdaa1db51c5a5b9",
+    "errors": [],
+    "examples": [
+      {
+        "name": "a total sums its lines",
+        "describe_path": [
+          "CleanTest"
+        ],
+        "line": 4,
+        "end_line": 8,
+        "line_count": 5,
+        "raw_line_count": 5,
+        "assertions": 2,
+        "branches": 0,
+        "setup_depth": 0,
+        "with_redefs": 0,
+        "helper_calls": 0,
+        "helper_hidden_lines": 0,
+        "temp_resources": 0,
+        "table_driven": false,
+        "api_contract": true,
+        "phases": 1,
+        "complexity": 1,
+        "complexity_score": 1.0,
+        "subject_symbols": [
+          "Order.new",
+          "total"
+        ],
+        "assert_signatures": [
+          "[:sym, [:number, [:sym, :sym]]]",
+          "[:sym, [:sym, :valid?]]"
+        ],
+        "assert_features": [
+          "[:sym, [:number, [:sym, :sym]]]",
+          ":sym",
+          "[:number, [:sym, :sym]]",
+          ":number",
+          "[:sym, :sym]",
+          "[:sym, [:sym, :valid?]]",
+          "[:sym, :valid?]",
+          ":valid?"
+        ],
+        "setup_signatures": [],
+        "setup_features": [],
+        "arrange_signatures": [
+          "[:assign, :sym, [:sym, :sym, [[:hash, [:lines, [:vec, :number, :number]]]]]]"
+        ],
+        "arrange_features": [
+          "[:assign, :sym, [:sym, :sym, [[:hash, [:lines, [:vec, :number, :number]]]]]]",
+          ":assign",
+          ":sym",
+          "[:sym, :sym, [[:hash, [:lines, [:vec, :number, :number]]]]]",
+          "[[:hash, [:lines, [:vec, :number, :number]]]]",
+          "[:hash, [:lines, [:vec, :number, :number]]]",
+          ":hash",
+          "[:lines, [:vec, :number, :number]]",
+          ":lines",
+          "[:vec, :number, :number]",
+          ":vec",
+          ":number"
+        ],
+        "literal_signatures": [],
+        "fixture_features": [],
+        "scrap": 1.0,
+        "smells": [],
+        "literal_features": []
+      },
+      {
+        "name": "a card shows on the board",
+        "describe_path": [
+          "CleanTest"
+        ],
+        "line": 10,
+        "end_line": 15,
+        "line_count": 6,
+        "raw_line_count": 6,
+        "assertions": 2,
+        "branches": 0,
+        "setup_depth": 0,
+        "with_redefs": 0,
+        "helper_calls": 0,
+        "helper_hidden_lines": 0,
+        "temp_resources": 0,
+        "table_driven": false,
+        "api_contract": true,
+        "phases": 1,
+        "complexity": 1,
+        "complexity_score": 1.0,
+        "subject_symbols": [
+          "Board.new",
+          "add",
+          "size"
+        ],
+        "assert_signatures": [
+          "[:sym, [:string]]",
+          "[:sym, [:number, [:sym, :sym]]]"
+        ],
+        "assert_features": [
+          "[:sym, [:string]]",
+          ":sym",
+          "[:string]",
+          ":string",
+          "[:sym, [:number, [:sym, :sym]]]",
+          "[:number, [:sym, :sym]]",
+          ":number",
+          "[:sym, :sym]"
+        ],
+        "setup_signatures": [],
+        "setup_features": [],
+        "arrange_signatures": [
+          "[:assign, :sym, [:sym, :sym]]",
+          "[:sym, :sym, [:string]]"
+        ],
+        "arrange_features": [
+          "[:assign, :sym, [:sym, :sym]]",
+          ":assign",
+          ":sym",
+          "[:sym, :sym]",
+          "[:sym, :sym, [:string]]",
+          "[:string]",
+          ":string"
+        ],
+        "literal_signatures": [],
+        "fixture_features": [],
+        "scrap": 1.0,
+        "smells": [],
+        "literal_features": []
+      }
+    ],
+    "summary": {
+      "example_count": 2,
+      "avg_scrap": 1.0,
+      "max_scrap": 1.0,
+      "branching_examples": 0,
+      "low_assertion_examples": 0,
+      "with_redefs_examples": 0,
+      "zero_assertion_examples": 0,
+      "helper_hidden_example_count": 0,
+      "table_driven_examples": 0,
+      "setup_duplication_score": 0,
+      "assertion_duplication_score": 0,
+      "fixture_duplication_score": 0,
+      "literal_duplication_score": 0,
+      "arrange_duplication_score": 0,
+      "subject_repetition_score": 0,
+      "duplication_score": 0,
+      "harmful_duplication_score": 0,
+      "avg_setup_similarity": 0.0,
+      "avg_assert_similarity": 0.455,
+      "avg_arrange_similarity": 0.118,
+      "avg_subject_similarity": 0.0,
+      "coverage_matrix_candidates": 0,
+      "case_matrix_repetition": 0,
+      "recommended_extraction_count": 0,
+      "extraction_pressure_score": 0,
+      "effective_duplication_score": 0,
+      "recommended_extractions": []
+    },
+    "file_score": 0.72,
+    "level": "STABLE",
+    "mode": "STABLE",
+    "ai": "LEAVE_ALONE",
+    "actions": [
+      [
+        3,
+        "No refactor recommended; the file is structurally stable enough to leave alone."
+      ]
+    ]
+  },
+  {
+    "path": "test/models/matrix_test.rb",
+    "content_hash": "61f9d0513467dec1",
+    "errors": [],
+    "examples": [
+      {
+        "name": "5 mm has no surcharge",
+        "describe_path": [
+          "MatrixTest"
+        ],
+        "line": 4,
+        "end_line": 6,
+        "line_count": 3,
+        "raw_line_count": 3,
+        "assertions": 1,
+        "branches": 0,
+        "setup_depth": 0,
+        "with_redefs": 0,
+        "helper_calls": 0,
+        "helper_hidden_lines": 0,
+        "temp_resources": 0,
+        "table_driven": false,
+        "api_contract": true,
+        "phases": 1,
+        "complexity": 1,
+        "complexity_score": 1.0,
+        "subject_symbols": [
+          "Surcharge.for"
+        ],
+        "assert_signatures": [
+          "[:sym, [:number, [:sym, :sym, [:number]]]]"
+        ],
+        "assert_features": [
+          "[:sym, [:number, [:sym, :sym, [:number]]]]",
+          ":sym",
+          "[:number, [:sym, :sym, [:number]]]",
+          ":number",
+          "[:sym, :sym, [:number]]",
+          "[:number]"
+        ],
+        "setup_signatures": [],
+        "setup_features": [],
+        "arrange_signatures": [],
+        "arrange_features": [],
+        "literal_signatures": [],
+        "fixture_features": [],
+        "scrap": 1.0,
+        "smells": [],
+        "literal_features": []
+      },
+      {
+        "name": "6 mm has the first surcharge",
+        "describe_path": [
+          "MatrixTest"
+        ],
+        "line": 8,
+        "end_line": 10,
+        "line_count": 3,
+        "raw_line_count": 3,
+        "assertions": 1,
+        "branches": 0,
+        "setup_depth": 0,
+        "with_redefs": 0,
+        "helper_calls": 0,
+        "helper_hidden_lines": 0,
+        "temp_resources": 0,
+        "table_driven": false,
+        "api_contract": true,
+        "phases": 1,
+        "complexity": 1,
+        "complexity_score": 1.0,
+        "subject_symbols": [
+          "Surcharge.for"
+        ],
+        "assert_signatures": [
+          "[:sym, [:number, [:sym, :sym, [:number]]]]"
+        ],
+        "assert_features": [
+          "[:sym, [:number, [:sym, :sym, [:number]]]]",
+          ":sym",
+          "[:number, [:sym, :sym, [:number]]]",
+          ":number",
+          "[:sym, :sym, [:number]]",
+          "[:number]"
+        ],
+        "setup_signatures": [],
+        "setup_features": [],
+        "arrange_signatures": [],
+        "arrange_features": [],
+        "literal_signatures": [],
+        "fixture_features": [],
+        "scrap": 1.0,
+        "smells": [],
+        "literal_features": []
+      },
+      {
+        "name": "10 mm keeps the first surcharge",
+        "describe_path": [
+          "MatrixTest"
+        ],
+        "line": 12,
+        "end_line": 14,
+        "line_count": 3,
+        "raw_line_count": 3,
+        "assertions": 1,
+        "branches": 0,
+        "setup_depth": 0,
+        "with_redefs": 0,
+        "helper_calls": 0,
+        "helper_hidden_lines": 0,
+        "temp_resources": 0,
+        "table_driven": false,
+        "api_contract": true,
+        "phases": 1,
+        "complexity": 1,
+        "complexity_score": 1.0,
+        "subject_symbols": [
+          "Surcharge.for"
+        ],
+        "assert_signatures": [
+          "[:sym, [:number, [:sym, :sym, [:number]]]]"
+        ],
+        "assert_features": [
+          "[:sym, [:number, [:sym, :sym, [:number]]]]",
+          ":sym",
+          "[:number, [:sym, :sym, [:number]]]",
+          ":number",
+          "[:sym, :sym, [:number]]",
+          "[:number]"
+        ],
+        "setup_signatures": [],
+        "setup_features": [],
+        "arrange_signatures": [],
+        "arrange_features": [],
+        "literal_signatures": [],
+        "fixture_features": [],
+        "scrap": 1.0,
+        "smells": [],
+        "literal_features": []
+      },
+      {
+        "name": "11 mm has the second surcharge",
+        "describe_path": [
+          "MatrixTest"
+        ],
+        "line": 16,
+        "end_line": 18,
+        "line_count": 3,
+        "raw_line_count": 3,
+        "assertions": 1,
+        "branches": 0,
+        "setup_depth": 0,
+        "with_redefs": 0,
+        "helper_calls": 0,
+        "helper_hidden_lines": 0,
+        "temp_resources": 0,
+        "table_driven": false,
+        "api_contract": true,
+        "phases": 1,
+        "complexity": 1,
+        "complexity_score": 1.0,
+        "subject_symbols": [
+          "Surcharge.for"
+        ],
+        "assert_signatures": [
+          "[:sym, [:number, [:sym, :sym, [:number]]]]"
+        ],
+        "assert_features": [
+          "[:sym, [:number, [:sym, :sym, [:number]]]]",
+          ":sym",
+          "[:number, [:sym, :sym, [:number]]]",
+          ":number",
+          "[:sym, :sym, [:number]]",
+          "[:number]"
+        ],
+        "setup_signatures": [],
+        "setup_features": [],
+        "arrange_signatures": [],
+        "arrange_features": [],
+        "literal_signatures": [],
+        "fixture_features": [],
+        "scrap": 1.0,
+        "smells": [],
+        "literal_features": []
+      },
+      {
+        "name": "the table form covers the same borders",
+        "describe_path": [
+          "MatrixTest"
+        ],
+        "line": 20,
+        "end_line": 24,
+        "line_count": 5,
+        "raw_line_count": 5,
+        "assertions": 1,
+        "branches": 1,
+        "setup_depth": 0,
+        "with_redefs": 0,
+        "helper_calls": 0,
+        "helper_hidden_lines": 0,
+        "temp_resources": 0,
+        "table_driven": true,
+        "api_contract": true,
+        "phases": 1,
+        "complexity": 1,
+        "complexity_score": 1.0,
+        "subject_symbols": [
+          "Surcharge.for"
+        ],
+        "assert_signatures": [
+          "[:sym, [:vec, [:vec, :number, :number], [:vec, :number, :number], [:vec, :number, :number], [:vec, :number, :number]], [:block_node, [:block_parameters_node, [:parameters_node, [:required_parameter_node], [:required_parameter_node]]], [[:sym, [:sym, [:sym, :sym, [:sym]]]]]]]"
+        ],
+        "assert_features": [
+          "[:sym, [:vec, [:vec, :number, :number], [:vec, :number, :number], [:vec, :number, :number], [:vec, :number, :number]], [:block_node, [:block_parameters_node, [:parameters_node, [:required_parameter_node], [:required_parameter_node]]], [[:sym, [:sym, [:sym, :sym, [:sym]]]]]]]",
+          ":sym",
+          "[:vec, [:vec, :number, :number], [:vec, :number, :number], [:vec, :number, :number], [:vec, :number, :number]]",
+          ":vec",
+          "[:vec, :number, :number]",
+          ":number",
+          "[:block_node, [:block_parameters_node, [:parameters_node, [:required_parameter_node], [:required_parameter_node]]], [[:sym, [:sym, [:sym, :sym, [:sym]]]]]]",
+          ":block_node",
+          "[:block_parameters_node, [:parameters_node, [:required_parameter_node], [:required_parameter_node]]]",
+          ":block_parameters_node",
+          "[:parameters_node, [:required_parameter_node], [:required_parameter_node]]",
+          ":parameters_node",
+          "[:required_parameter_node]",
+          ":required_parameter_node",
+          "[[:sym, [:sym, [:sym, :sym, [:sym]]]]]",
+          "[:sym, [:sym, [:sym, :sym, [:sym]]]]",
+          "[:sym, [:sym, :sym, [:sym]]]",
+          "[:sym, :sym, [:sym]]",
+          "[:sym]"
+        ],
+        "setup_signatures": [],
+        "setup_features": [],
+        "arrange_signatures": [],
+        "arrange_features": [],
+        "literal_signatures": [],
+        "fixture_features": [],
+        "scrap": 1.0,
+        "smells": [],
+        "literal_features": []
+      }
+    ],
+    "summary": {
+      "example_count": 5,
+      "avg_scrap": 1.0,
+      "max_scrap": 1.0,
+      "branching_examples": 0,
+      "low_assertion_examples": 5,
+      "with_redefs_examples": 0,
+      "zero_assertion_examples": 0,
+      "helper_hidden_example_count": 0,
+      "table_driven_examples": 1,
+      "setup_duplication_score": 0,
+      "assertion_duplication_score": 4,
+      "fixture_duplication_score": 0,
+      "literal_duplication_score": 0,
+      "arrange_duplication_score": 0,
+      "subject_repetition_score": 5,
+      "duplication_score": 4,
+      "harmful_duplication_score": 4,
+      "avg_setup_similarity": 0.0,
+      "avg_assert_similarity": 0.635,
+      "avg_arrange_similarity": 0.0,
+      "avg_subject_similarity": 1.0,
+      "coverage_matrix_candidates": 4,
+      "case_matrix_repetition": 4,
+      "recommended_extraction_count": 0,
+      "extraction_pressure_score": 0,
+      "effective_duplication_score": 0,
+      "recommended_extractions": []
+    },
+    "file_score": 15.8,
+    "level": "LOW",
+    "mode": "LOCAL",
+    "ai": "AUTO_TABLE_DRIVE",
+    "actions": [
+      [
+        3,
+        "Convert repeated low-complexity tests into table-driven checks; treat this as coverage-matrix repetition, not harmful duplication."
+      ],
+      [
+        3,
+        "Strengthen assertions in weak tests before doing structural cleanup."
+      ]
+    ]
+  },
+  {
+    "path": "test/models/smelly_test.rb",
+    "content_hash": "abbe64fd221322cb",
+    "errors": [],
+    "examples": [
+      {
+        "name": "it saves the record",
+        "describe_path": [
+          "SmellyTest"
+        ],
+        "line": 8,
+        "end_line": 11,
+        "line_count": 4,
+        "raw_line_count": 4,
+        "assertions": 0,
+        "branches": 0,
+        "setup_depth": 1,
+        "with_redefs": 0,
+        "helper_calls": 0,
+        "helper_hidden_lines": 0,
+        "temp_resources": 0,
+        "table_driven": false,
+        "api_contract": true,
+        "phases": 0,
+        "complexity": 2,
+        "complexity_score": 1.0,
+        "subject_symbols": [
+          "Record.new",
+          "save"
+        ],
+        "assert_signatures": [],
+        "assert_features": [],
+        "setup_signatures": [
+          "[:assign, :sym, [:sym, :sym]]"
+        ],
+        "setup_features": [
+          "[:assign, :sym, [:sym, :sym]]",
+          ":assign",
+          ":sym",
+          "[:sym, :sym]"
+        ],
+        "arrange_signatures": [
+          "[:assign, :sym, [:sym, :sym, [[:hash, [:name, :string]]]]]",
+          "[:sym, :sym]"
+        ],
+        "arrange_features": [
+          "[:assign, :sym, [:sym, :sym, [[:hash, [:name, :string]]]]]",
+          ":assign",
+          ":sym",
+          "[:sym, :sym, [[:hash, [:name, :string]]]]",
+          "[[:hash, [:name, :string]]]",
+          "[:hash, [:name, :string]]",
+          ":hash",
+          "[:name, :string]",
+          ":name",
+          ":string",
+          "[:sym, :sym]"
+        ],
+        "literal_signatures": [],
+        "fixture_features": [
+          "[:vec, :string]",
+          ":vec",
+          ":string"
+        ],
+        "scrap": 11.0,
+        "smells": [
+          "no-assertions"
+        ],
+        "literal_features": []
+      },
+      {
+        "name": "it syncs everything through the api",
+        "describe_path": [
+          "SmellyTest"
+        ],
+        "line": 13,
+        "end_line": 22,
+        "line_count": 10,
+        "raw_line_count": 10,
+        "assertions": 1,
+        "branches": 0,
+        "setup_depth": 2,
+        "with_redefs": 4,
+        "helper_calls": 0,
+        "helper_hidden_lines": 0,
+        "temp_resources": 0,
+        "table_driven": false,
+        "api_contract": false,
+        "phases": 0,
+        "complexity": 3,
+        "complexity_score": 8.26,
+        "subject_symbols": [
+          "expect",
+          "sync",
+          "synced?"
+        ],
+        "assert_signatures": [],
+        "assert_features": [],
+        "setup_signatures": [
+          "[:assign, :sym, [:sym, :sym]]",
+          "[:sym, :sym, [:token, :string], [:block_node, [[:assign, :sym, [:sym, :sym]], [:sym, :sym, [:call, :boolean]], [:sym, :sym, [:sym]], [:sym, [[:sym, :sym]]]]]]"
+        ],
+        "setup_features": [
+          "[:assign, :sym, [:sym, :sym]]",
+          ":assign",
+          ":sym",
+          "[:sym, :sym]",
+          "[:sym, :sym, [:token, :string], [:block_node, [[:assign, :sym, [:sym, :sym]], [:sym, :sym, [:call, :boolean]], [:sym, :sym, [:sym]], [:sym, [[:sym, :sym]]]]]]",
+          "[:token, :string]",
+          ":token",
+          ":string",
+          "[:block_node, [[:assign, :sym, [:sym, :sym]], [:sym, :sym, [:call, :boolean]], [:sym, :sym, [:sym]], [:sym, [[:sym, :sym]]]]]",
+          ":block_node",
+          "[[:assign, :sym, [:sym, :sym]], [:sym, :sym, [:call, :boolean]], [:sym, :sym, [:sym]], [:sym, [[:sym, :sym]]]]",
+          "[:sym, :sym, [:call, :boolean]]",
+          "[:call, :boolean]",
+          ":call",
+          ":boolean",
+          "[:sym, :sym, [:sym]]",
+          "[:sym]",
+          "[:sym, [[:sym, :sym]]]",
+          "[[:sym, :sym]]"
+        ],
+        "arrange_signatures": [
+          "[:sym, [:get, :string]]",
+          "[:sym, [:get, :string]]",
+          "[:sym, :sym, [:token, :string], [:block_node, [[:assign, :sym, [:sym, :sym]], [:sym, :sym, [:call, :boolean]], [:sym, :sym, [:sym]], [:sym, [[:sym, :sym]]]]]]"
+        ],
+        "arrange_features": [
+          "[:sym, [:get, :string]]",
+          ":sym",
+          "[:get, :string]",
+          ":get",
+          ":string",
+          "[:sym, :sym, [:token, :string], [:block_node, [[:assign, :sym, [:sym, :sym]], [:sym, :sym, [:call, :boolean]], [:sym, :sym, [:sym]], [:sym, [[:sym, :sym]]]]]]",
+          "[:token, :string]",
+          ":token",
+          "[:block_node, [[:assign, :sym, [:sym, :sym]], [:sym, :sym, [:call, :boolean]], [:sym, :sym, [:sym]], [:sym, [[:sym, :sym]]]]]",
+          ":block_node",
+          "[[:assign, :sym, [:sym, :sym]], [:sym, :sym, [:call, :boolean]], [:sym, :sym, [:sym]], [:sym, [[:sym, :sym]]]]",
+          "[:assign, :sym, [:sym, :sym]]",
+          ":assign",
+          "[:sym, :sym]",
+          "[:sym, :sym, [:call, :boolean]]",
+          "[:call, :boolean]",
+          ":call",
+          ":boolean",
+          "[:sym, :sym, [:sym]]",
+          "[:sym]",
+          "[:sym, [[:sym, :sym]]]",
+          "[[:sym, :sym]]"
+        ],
+        "literal_signatures": [],
+        "fixture_features": [
+          "[:vec, :string, :string]",
+          ":vec",
+          ":string"
+        ],
+        "scrap": 12.26,
+        "smells": [
+          "high-mocking"
+        ],
+        "literal_features": []
+      },
+      {
+        "name": "it walks the whole flow",
+        "describe_path": [
+          "SmellyTest"
+        ],
+        "line": 24,
+        "end_line": 33,
+        "line_count": 10,
+        "raw_line_count": 10,
+        "assertions": 3,
+        "branches": 0,
+        "setup_depth": 1,
+        "with_redefs": 0,
+        "helper_calls": 0,
+        "helper_hidden_lines": 0,
+        "temp_resources": 0,
+        "table_driven": false,
+        "api_contract": false,
+        "phases": 3,
+        "complexity": 2,
+        "complexity_score": 4.95,
+        "subject_symbols": [
+          "visit_page",
+          "click_on",
+          "fill_in"
+        ],
+        "assert_signatures": [
+          "[:sym, [:string]]",
+          "[:sym, [:string]]",
+          "[:sym, [:string]]"
+        ],
+        "assert_features": [
+          "[:sym, [:string]]",
+          ":sym",
+          "[:string]",
+          ":string"
+        ],
+        "setup_signatures": [
+          "[:assign, :sym, [:sym, :sym]]"
+        ],
+        "setup_features": [
+          "[:assign, :sym, [:sym, :sym]]",
+          ":assign",
+          ":sym",
+          "[:sym, :sym]"
+        ],
+        "arrange_signatures": [
+          "[:sym]",
+          "[:sym, [:string]]",
+          "[:sym, [:string]]",
+          "[:sym, [:string, [:hash, [:with, :string]]]]",
+          "[:sym, [:string]]"
+        ],
+        "arrange_features": [
+          "[:sym]",
+          ":sym",
+          "[:sym, [:string]]",
+          "[:string]",
+          ":string",
+          "[:sym, [:string, [:hash, [:with, :string]]]]",
+          "[:string, [:hash, [:with, :string]]]",
+          "[:hash, [:with, :string]]",
+          ":hash",
+          "[:with, :string]",
+          ":with"
+        ],
+        "literal_signatures": [],
+        "fixture_features": [
+          "[:vec, :string]",
+          ":vec",
+          ":string"
+        ],
+        "scrap": 9.95,
+        "smells": [
+          "multiple-phases"
+        ],
+        "literal_features": []
+      },
+      {
+        "name": "it handles a large payload",
+        "describe_path": [
+          "SmellyTest"
+        ],
+        "line": 35,
+        "end_line": 50,
+        "line_count": 16,
+        "raw_line_count": 16,
+        "assertions": 1,
+        "branches": 1,
+        "setup_depth": 1,
+        "with_redefs": 0,
+        "helper_calls": 0,
+        "helper_hidden_lines": 0,
+        "temp_resources": 0,
+        "table_driven": false,
+        "api_contract": false,
+        "phases": 1,
+        "complexity": 3,
+        "complexity_score": 8.26,
+        "subject_symbols": [
+          "parse",
+          "Parser.new",
+          "ok?",
+          "value",
+          "flunk_parse"
+        ],
+        "assert_signatures": [
+          "[:if_node, [:sym, :sym], [[:sym, [:number, [:sym, :sym, [:string]]]]], [:else_node, [[:sym]]]]"
+        ],
+        "assert_features": [
+          "[:if_node, [:sym, :sym], [[:sym, [:number, [:sym, :sym, [:string]]]]], [:else_node, [[:sym]]]]",
+          ":if_node",
+          "[:sym, :sym]",
+          ":sym",
+          "[[:sym, [:number, [:sym, :sym, [:string]]]]]",
+          "[:sym, [:number, [:sym, :sym, [:string]]]]",
+          "[:number, [:sym, :sym, [:string]]]",
+          ":number",
+          "[:sym, :sym, [:string]]",
+          "[:string]",
+          ":string",
+          "[:else_node, [[:sym]]]",
+          ":else_node",
+          "[[:sym]]",
+          "[:sym]"
+        ],
+        "setup_signatures": [
+          "[:assign, :sym, [:sym, :sym]]"
+        ],
+        "setup_features": [
+          "[:assign, :sym, [:sym, :sym]]",
+          ":assign",
+          ":sym",
+          "[:sym, :sym]"
+        ],
+        "arrange_signatures": [
+          "[:assign, :sym, :string]",
+          "[:assign, :sym, [:sym, [:sym, :sym], [:sym]]]"
+        ],
+        "arrange_features": [
+          "[:assign, :sym, :string]",
+          ":assign",
+          ":sym",
+          ":string",
+          "[:assign, :sym, [:sym, [:sym, :sym], [:sym]]]",
+          "[:sym, [:sym, :sym], [:sym]]",
+          "[:sym, :sym]",
+          "[:sym]"
+        ],
+        "literal_signatures": [],
+        "fixture_features": [
+          "[:vec, :string]",
+          ":vec",
+          ":string"
+        ],
+        "scrap": 14.26,
+        "smells": [
+          "low-assertion-density"
+        ],
+        "literal_features": []
+      },
+      {
+        "name": "it writes an export file",
+        "describe_path": [
+          "SmellyTest"
+        ],
+        "line": 52,
+        "end_line": 57,
+        "line_count": 6,
+        "raw_line_count": 6,
+        "assertions": 1,
+        "branches": 0,
+        "setup_depth": 1,
+        "with_redefs": 0,
+        "helper_calls": 0,
+        "helper_hidden_lines": 0,
+        "temp_resources": 1,
+        "table_driven": false,
+        "api_contract": false,
+        "phases": 1,
+        "complexity": 2,
+        "complexity_score": 4.95,
+        "subject_symbols": [
+          "Dir.mktmpdir",
+          "run",
+          "Exporter.new",
+          "File.exist?",
+          "File.join"
+        ],
+        "assert_signatures": [
+          "[:sym, :sym, [:block_node, [:block_parameters_node, [:parameters_node, [:required_parameter_node]]], [[:sym, [:sym, :sym, [:sym]]], [:sym, [[:sym, :sym, [[:sym, :sym, [:sym, :string]]]]]]]]]"
+        ],
+        "assert_features": [
+          "[:sym, :sym, [:block_node, [:block_parameters_node, [:parameters_node, [:required_parameter_node]]], [[:sym, [:sym, :sym, [:sym]]], [:sym, [[:sym, :sym, [[:sym, :sym, [:sym, :string]]]]]]]]]",
+          ":sym",
+          "[:block_node, [:block_parameters_node, [:parameters_node, [:required_parameter_node]]], [[:sym, [:sym, :sym, [:sym]]], [:sym, [[:sym, :sym, [[:sym, :sym, [:sym, :string]]]]]]]]",
+          ":block_node",
+          "[:block_parameters_node, [:parameters_node, [:required_parameter_node]]]",
+          ":block_parameters_node",
+          "[:parameters_node, [:required_parameter_node]]",
+          ":parameters_node",
+          "[:required_parameter_node]",
+          ":required_parameter_node",
+          "[[:sym, [:sym, :sym, [:sym]]], [:sym, [[:sym, :sym, [[:sym, :sym, [:sym, :string]]]]]]]",
+          "[:sym, [:sym, :sym, [:sym]]]",
+          "[:sym, :sym, [:sym]]",
+          "[:sym]",
+          "[:sym, [[:sym, :sym, [[:sym, :sym, [:sym, :string]]]]]]",
+          "[[:sym, :sym, [[:sym, :sym, [:sym, :string]]]]]",
+          "[:sym, :sym, [[:sym, :sym, [:sym, :string]]]]",
+          "[[:sym, :sym, [:sym, :string]]]",
+          "[:sym, :sym, [:sym, :string]]",
+          "[:sym, :string]",
+          ":string"
+        ],
+        "setup_signatures": [
+          "[:assign, :sym, [:sym, :sym]]"
+        ],
+        "setup_features": [
+          "[:assign, :sym, [:sym, :sym]]",
+          ":assign",
+          ":sym",
+          "[:sym, :sym]"
+        ],
+        "arrange_signatures": [],
+        "arrange_features": [],
+        "literal_signatures": [],
+        "fixture_features": [
+          "[:vec, :string]",
+          ":vec",
+          ":string"
+        ],
+        "scrap": 7.95,
+        "smells": [
+          "temp-resource-work"
+        ],
+        "literal_features": []
+      },
+      {
+        "name": "it uses a long local helper",
+        "describe_path": [
+          "SmellyTest"
+        ],
+        "line": 59,
+        "end_line": 62,
+        "line_count": 14,
+        "raw_line_count": 4,
+        "assertions": 1,
+        "branches": 0,
+        "setup_depth": 1,
+        "with_redefs": 0,
+        "helper_calls": 1,
+        "helper_hidden_lines": 10,
+        "temp_resources": 0,
+        "table_driven": false,
+        "api_contract": false,
+        "phases": 1,
+        "complexity": 4,
+        "complexity_score": 8.26,
+        "subject_symbols": [
+          "Report.new",
+          "add",
+          "size"
+        ],
+        "assert_signatures": [
+          "[:sym, [:number, [:sym, :sym]]]"
+        ],
+        "assert_features": [
+          "[:sym, [:number, [:sym, :sym]]]",
+          ":sym",
+          "[:number, [:sym, :sym]]",
+          ":number",
+          "[:sym, :sym]"
+        ],
+        "setup_signatures": [
+          "[:assign, :sym, [:sym, :sym]]"
+        ],
+        "setup_features": [
+          "[:assign, :sym, [:sym, :sym]]",
+          ":assign",
+          ":sym",
+          "[:sym, :sym]"
+        ],
+        "arrange_signatures": [
+          "[:assign, :sym, [:sym]]"
+        ],
+        "arrange_features": [
+          "[:assign, :sym, [:sym]]",
+          ":assign",
+          ":sym",
+          "[:sym]"
+        ],
+        "literal_signatures": [],
+        "fixture_features": [
+          "[:vec, :string]",
+          ":vec",
+          ":string"
+        ],
+        "scrap": 18.26,
+        "smells": [
+          "low-assertion-density",
+          "helper-hidden-complexity"
+        ],
+        "literal_features": []
+      }
+    ],
+    "summary": {
+      "example_count": 6,
+      "avg_scrap": 12.28,
+      "max_scrap": 18.26,
+      "branching_examples": 1,
+      "low_assertion_examples": 5,
+      "with_redefs_examples": 1,
+      "zero_assertion_examples": 1,
+      "helper_hidden_example_count": 1,
+      "table_driven_examples": 0,
+      "setup_duplication_score": 5,
+      "assertion_duplication_score": 0,
+      "fixture_duplication_score": 6,
+      "literal_duplication_score": 0,
+      "arrange_duplication_score": 0,
+      "subject_repetition_score": 0,
+      "duplication_score": 11,
+      "harmful_duplication_score": 11,
+      "avg_setup_similarity": 0.737,
+      "avg_assert_similarity": 0.047,
+      "avg_arrange_similarity": 0.121,
+      "avg_subject_similarity": 0.0,
+      "coverage_matrix_candidates": 1,
+      "case_matrix_repetition": 1,
+      "recommended_extraction_count": 0,
+      "extraction_pressure_score": 0,
+      "effective_duplication_score": 0,
+      "recommended_extractions": []
+    },
+    "file_score": 47.86,
+    "level": "HIGH",
+    "mode": "LOCAL",
+    "ai": "AUTO_REFACTOR",
+    "actions": [
+      [
+        3,
+        "Convert repeated low-complexity tests into table-driven checks; treat this as coverage-matrix repetition, not harmful duplication."
+      ],
+      [
+        3,
+        "Strengthen assertions in weak tests before doing structural cleanup."
+      ],
+      [
+        1,
+        "Be skeptical of helper extraction that only hides setup; helper-hidden complexity should still count as complexity."
+      ],
+      [
+        1,
+        "Consider splitting this file or block by responsibility."
+      ]
+    ]
+  },
+  {
+    "path": "test/models/spec_style_test.rb",
+    "content_hash": "90a80aaae55537bb",
+    "errors": [],
+    "examples": [
+      {
+        "name": "is zero when empty",
+        "describe_path": [
+          "Order",
+          "#total"
+        ],
+        "line": 9,
+        "end_line": 11,
+        "line_count": 3,
+        "raw_line_count": 3,
+        "assertions": 1,
+        "branches": 0,
+        "setup_depth": 1,
+        "with_redefs": 0,
+        "helper_calls": 0,
+        "helper_hidden_lines": 0,
+        "temp_resources": 0,
+        "table_driven": false,
+        "api_contract": true,
+        "phases": 1,
+        "complexity": 2,
+        "complexity_score": 1.0,
+        "subject_symbols": [
+          "_",
+          "total"
+        ],
+        "assert_signatures": [
+          "[:sym, [:sym, [[:sym, :sym]]], [:number]]"
+        ],
+        "assert_features": [
+          "[:sym, [:sym, [[:sym, :sym]]], [:number]]",
+          ":sym",
+          "[:sym, [[:sym, :sym]]]",
+          "[[:sym, :sym]]",
+          "[:sym, :sym]",
+          "[:number]",
+          ":number"
+        ],
+        "setup_signatures": [
+          "[:assign, :sym, [:sym, :sym]]"
+        ],
+        "setup_features": [
+          "[:assign, :sym, [:sym, :sym]]",
+          ":assign",
+          ":sym",
+          "[:sym, :sym]"
+        ],
+        "arrange_signatures": [],
+        "arrange_features": [],
+        "literal_signatures": [],
+        "fixture_features": [
+          "[:vec, :string]",
+          ":vec",
+          ":string"
+        ],
+        "scrap": 1.0,
+        "smells": [],
+        "literal_features": []
+      },
+      {
+        "name": "sums the lines",
+        "describe_path": [
+          "Order",
+          "#total"
+        ],
+        "line": 13,
+        "end_line": 16,
+        "line_count": 4,
+        "raw_line_count": 4,
+        "assertions": 1,
+        "branches": 0,
+        "setup_depth": 1,
+        "with_redefs": 0,
+        "helper_calls": 0,
+        "helper_hidden_lines": 0,
+        "temp_resources": 0,
+        "table_driven": false,
+        "api_contract": true,
+        "phases": 1,
+        "complexity": 2,
+        "complexity_score": 1.0,
+        "subject_symbols": [
+          "add",
+          "_",
+          "total"
+        ],
+        "assert_signatures": [
+          "[:sym, [:sym, [[:sym, :sym]]], [:number]]"
+        ],
+        "assert_features": [
+          "[:sym, [:sym, [[:sym, :sym]]], [:number]]",
+          ":sym",
+          "[:sym, [[:sym, :sym]]]",
+          "[[:sym, :sym]]",
+          "[:sym, :sym]",
+          "[:number]",
+          ":number"
+        ],
+        "setup_signatures": [
+          "[:assign, :sym, [:sym, :sym]]"
+        ],
+        "setup_features": [
+          "[:assign, :sym, [:sym, :sym]]",
+          ":assign",
+          ":sym",
+          "[:sym, :sym]"
+        ],
+        "arrange_signatures": [
+          "[:sym, :sym, [:number]]"
+        ],
+        "arrange_features": [
+          "[:sym, :sym, [:number]]",
+          ":sym",
+          "[:number]",
+          ":number"
+        ],
+        "literal_signatures": [],
+        "fixture_features": [
+          "[:vec, :string]",
+          ":vec",
+          ":string"
+        ],
+        "scrap": 1.0,
+        "smells": [],
+        "literal_features": []
+      }
+    ],
+    "summary": {
+      "example_count": 2,
+      "avg_scrap": 1.0,
+      "max_scrap": 1.0,
+      "branching_examples": 0,
+      "low_assertion_examples": 2,
+      "with_redefs_examples": 0,
+      "zero_assertion_examples": 0,
+      "helper_hidden_example_count": 0,
+      "table_driven_examples": 0,
+      "setup_duplication_score": 2,
+      "assertion_duplication_score": 2,
+      "fixture_duplication_score": 2,
+      "literal_duplication_score": 0,
+      "arrange_duplication_score": 0,
+      "subject_repetition_score": 2,
+      "duplication_score": 6,
+      "harmful_duplication_score": 6,
+      "avg_setup_similarity": 1.0,
+      "avg_assert_similarity": 1.0,
+      "avg_arrange_similarity": 0.0,
+      "avg_subject_similarity": 0.667,
+      "coverage_matrix_candidates": 1,
+      "case_matrix_repetition": 1,
+      "recommended_extraction_count": 0,
+      "extraction_pressure_score": 0,
+      "effective_duplication_score": 0,
+      "recommended_extractions": []
+    },
+    "file_score": 7.22,
+    "level": "STABLE",
+    "mode": "STABLE",
+    "ai": "LEAVE_ALONE",
+    "actions": [
+      [
+        3,
+        "No refactor recommended; the file is structurally stable enough to leave alone."
+      ]
+    ]
+  },
+  {
+    "path": "test/models/structure_test.rb",
+    "content_hash": "4be03336daf5e010",
+    "errors": [
+      "ERROR line 5: (test) inside (test) at line 4",
+      "ERROR line 8: (setup) inside (test) at line 4",
+      "ERROR line 17: test_twice is defined again; line 13 never runs"
+    ],
+    "examples": [
+      {
+        "name": "an outer test",
+        "describe_path": [
+          "StructureTest"
+        ],
+        "line": 4,
+        "end_line": 11,
+        "line_count": 8,
+        "raw_line_count": 8,
+        "assertions": 1,
+        "branches": 0,
+        "setup_depth": 0,
+        "with_redefs": 0,
+        "helper_calls": 0,
+        "helper_hidden_lines": 0,
+        "temp_resources": 0,
+        "table_driven": false,
+        "api_contract": true,
+        "phases": 1,
+        "complexity": 1,
+        "complexity_score": 1.0,
+        "subject_symbols": [],
+        "assert_signatures": [
+          "[:sym, [:string], [:block_node, [[:sym, [:boolean]]]]]"
+        ],
+        "assert_features": [
+          "[:sym, [:string], [:block_node, [[:sym, [:boolean]]]]]",
+          ":sym",
+          "[:string]",
+          ":string",
+          "[:block_node, [[:sym, [:boolean]]]]",
+          ":block_node",
+          "[[:sym, [:boolean]]]",
+          "[:sym, [:boolean]]",
+          "[:boolean]",
+          ":boolean"
+        ],
+        "setup_signatures": [],
+        "setup_features": [],
+        "arrange_signatures": [
+          "[:sym, [:block_node, [[:assign, :sym, :number]]]]"
+        ],
+        "arrange_features": [
+          "[:sym, [:block_node, [[:assign, :sym, :number]]]]",
+          ":sym",
+          "[:block_node, [[:assign, :sym, :number]]]",
+          ":block_node",
+          "[[:assign, :sym, :number]]",
+          "[:assign, :sym, :number]",
+          ":assign",
+          ":number"
+        ],
+        "literal_signatures": [],
+        "fixture_features": [],
+        "scrap": 1.0,
+        "smells": [],
+        "literal_features": []
+      },
+      {
+        "name": "test_twice",
+        "describe_path": [
+          "StructureTest"
+        ],
+        "line": 13,
+        "end_line": 15,
+        "line_count": 3,
+        "raw_line_count": 3,
+        "assertions": 1,
+        "branches": 0,
+        "setup_depth": 0,
+        "with_redefs": 0,
+        "helper_calls": 0,
+        "helper_hidden_lines": 0,
+        "temp_resources": 0,
+        "table_driven": false,
+        "api_contract": true,
+        "phases": 1,
+        "complexity": 1,
+        "complexity_score": 1.0,
+        "subject_symbols": [],
+        "assert_signatures": [
+          "[:sym, [:boolean]]"
+        ],
+        "assert_features": [
+          "[:sym, [:boolean]]",
+          ":sym",
+          "[:boolean]",
+          ":boolean"
+        ],
+        "setup_signatures": [],
+        "setup_features": [],
+        "arrange_signatures": [],
+        "arrange_features": [],
+        "literal_signatures": [],
+        "fixture_features": [],
+        "scrap": 1.0,
+        "smells": [],
+        "literal_features": []
+      },
+      {
+        "name": "test_twice",
+        "describe_path": [
+          "StructureTest"
+        ],
+        "line": 17,
+        "end_line": 19,
+        "line_count": 3,
+        "raw_line_count": 3,
+        "assertions": 1,
+        "branches": 0,
+        "setup_depth": 0,
+        "with_redefs": 0,
+        "helper_calls": 0,
+        "helper_hidden_lines": 0,
+        "temp_resources": 0,
+        "table_driven": false,
+        "api_contract": true,
+        "phases": 1,
+        "complexity": 1,
+        "complexity_score": 1.0,
+        "subject_symbols": [],
+        "assert_signatures": [
+          "[:sym, [:boolean]]"
+        ],
+        "assert_features": [
+          "[:sym, [:boolean]]",
+          ":sym",
+          "[:boolean]",
+          ":boolean"
+        ],
+        "setup_signatures": [],
+        "setup_features": [],
+        "arrange_signatures": [],
+        "arrange_features": [],
+        "literal_signatures": [],
+        "fixture_features": [],
+        "scrap": 1.0,
+        "smells": [],
+        "literal_features": []
+      }
+    ],
+    "summary": {
+      "example_count": 3,
+      "avg_scrap": 1.0,
+      "max_scrap": 1.0,
+      "branching_examples": 0,
+      "low_assertion_examples": 3,
+      "with_redefs_examples": 0,
+      "zero_assertion_examples": 0,
+      "helper_hidden_example_count": 0,
+      "table_driven_examples": 0,
+      "setup_duplication_score": 0,
+      "assertion_duplication_score": 2,
+      "fixture_duplication_score": 0,
+      "literal_duplication_score": 0,
+      "arrange_duplication_score": 0,
+      "subject_repetition_score": 0,
+      "duplication_score": 2,
+      "harmful_duplication_score": 2,
+      "avg_setup_similarity": 0.0,
+      "avg_assert_similarity": 0.6,
+      "avg_arrange_similarity": 0.0,
+      "avg_subject_similarity": 0.0,
+      "coverage_matrix_candidates": 0,
+      "case_matrix_repetition": 0,
+      "recommended_extraction_count": 0,
+      "extraction_pressure_score": 0,
+      "effective_duplication_score": 0,
+      "recommended_extractions": []
+    },
+    "file_score": 14.17,
+    "level": "LOW",
+    "mode": "LOCAL",
+    "ai": "AUTO_REFACTOR",
+    "actions": [
+      [
+        3,
+        "Strengthen assertions in weak tests before doing structural cleanup."
+      ]
+    ]
+  }
+]
