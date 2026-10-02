@@ -113,7 +113,7 @@ Duplication is structural and fuzzy. Names and literal values become placeholder
 SCRAP (speclj)          scrap4rb (Minitest)
 --------------          -------------------
 describe, context       a test class, or a minitest/spec describe block
-it                      test "..." do, def test_*, it "..." do
+it                      test "..." do, def test_*, it "..." do, define_method(:"test_...")
 before, with            setup blocks and def setup, inherited by every test in the class
 let, binding            travel_to, freeze_time, within, using_session,
                         perform_enqueued_jobs, with_*, and stub with a block

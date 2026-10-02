@@ -94,6 +94,24 @@ module Scrap4rb
         (bare_call?(node) && TEST_CALLS.include?(node.name) && node.block.is_a?(Prism::BlockNode))
     end
 
+    def dynamic_test?(node)
+      bare_call?(node) && node.name == :define_method && node.block.is_a?(Prism::BlockNode) &&
+        dynamic_test_name(node).to_s.start_with?("test_")
+    end
+
+    def dynamic_test_name(node)
+      arg = node.arguments&.arguments&.first
+      case arg
+      when Prism::SymbolNode, Prism::StringNode then arg.unescaped
+      when Prism::InterpolatedSymbolNode, Prism::InterpolatedStringNode then arg.parts.map(&:slice).join
+      end
+    end
+
+    def dynamic_test_in_loop(node)
+      return unless call?(node) && TABLE_CALLS.include?(node.name) && node.block.is_a?(Prism::BlockNode)
+      block_body(node).find { dynamic_test?(_1) }
+    end
+
     def test_name(node)
       if node.is_a?(Prism::DefNode) then node.name.to_s
       else node.arguments&.arguments&.first.then { _1.respond_to?(:unescaped) ? _1.unescaped : _1&.slice.to_s }

@@ -115,6 +115,25 @@ class ExampleTest < Minitest::Test
     assert_equal [["is empty", ["Order"]], ["test_plain", ["T"]]], exs.map { [_1[:name], _1[:describe_path]] }
   end
 
+  def test_define_method_tests_in_a_loop_are_one_table_driven_example_spanning_the_loop
+    exs = examples("CASES.each do |name, args|\n  define_method(:\"test_\#{name}\") do\n    assert_golden(name, run(args))\n    assert ok\n  end\nend")
+    assert_equal ["test_\#{name}"], exs.keys
+    ex = exs.values.first
+    assert ex[:table_driven]
+    assert_equal [2, 7], [ex[:line], ex[:end_line]]
+    assert_equal 2, ex[:assertions]
+  end
+
+  def test_a_single_define_method_test_is_an_example_but_not_table_driven
+    ex = examples("define_method(:test_plain) do\n  assert ok\nend")["test_plain"]
+    refute ex[:table_driven]
+    assert_equal 1, ex[:assertions]
+  end
+
+  def test_define_method_for_a_helper_name_is_not_a_test
+    assert_empty examples("[1, 2].each do |n|\n  define_method(:\"build_\#{n}\") { n }\nend")
+  end
+
   def test_the_complexity_curve_saturates_at_the_cap
     assert_equal 1.0, Scrap4rb::Example.saturating(1)
     assert_in_delta 4.954, Scrap4rb::Example.saturating(2), 0.001

@@ -121,8 +121,8 @@ module Scrap4rb
       ].select(&:first).map { { label: _2, penalty: _3 } }
     end
 
-    def score(name:, node:, body:, ctx:, inherited_setup:, describe_path:)
-      m = combine(*body.map { analyze(_1, ctx, inherited_setup.size, Set.new) })
+    def score(name:, node:, body:, ctx:, inherited_setup:, describe_path:, table_driven: false)
+      m = combine(*body.map { analyze(_1, ctx, inherited_setup.size, Set.new) }, { table_driven: })
       raw_lines = lines_of(node)
       line_count = raw_lines + m[:helper_hidden_lines]
       forms = top_forms(body)
@@ -177,6 +177,11 @@ module Scrap4rb
           collect(body, ctx, path + [name], setup, out)
         elsif test_node?(f)
           out << score(name: test_name(f), node: f, body: test_body(f), ctx:, inherited_setup: setup, describe_path: path)
+        elsif (inner = dynamic_test_in_loop(f))
+          out << score(name: dynamic_test_name(inner), node: f, body: block_body(inner), ctx:, inherited_setup: setup,
+                       describe_path: path, table_driven: true)
+        elsif dynamic_test?(f)
+          out << score(name: dynamic_test_name(f), node: f, body: block_body(f), ctx:, inherited_setup: setup, describe_path: path)
         end
       end
       out
