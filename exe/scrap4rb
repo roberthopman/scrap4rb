@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 require "scrap4rb"
 
-Scrap4rb.main(ARGV)
+Scrap4rb::CLI.run(ARGV)
