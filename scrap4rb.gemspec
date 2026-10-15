@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.metadata["allowed_push_host"] = "https://rubygems.org"
   spec.metadata["rubygems_mfa_required"] = "true"
 
-  spec.files = Dir["lib/**/*.rb", "exe/*", "README.md", "LICENSE", "CHANGELOG.md"]
+  spec.files = Dir["lib/**/*.rb", "exe/*", "docs/*.md", "README.md", "LICENSE", "CHANGELOG.md"]
   spec.bindir = "exe"
   spec.executables = ["scrap4rb"]
   spec.require_paths = ["lib"]
