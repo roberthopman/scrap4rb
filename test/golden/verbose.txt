@@ -1,6 +1,7 @@
 
 test/models/boundary_test.rb
   score 30.67 MEDIUM  mode LOCAL  ai AUTO_REFACTOR  tests=3 avg=1.0 max=1.0
+  why    low-assert=1.00 branching=0.00 mocking=0.00 helper-hidden=0 harmful-dup=6 extraction=31.7 matrix=0 subject-rep=3
   HIGH   Strengthen assertions in weak tests before doing structural cleanup.
   MEDIUM Extract shared setup or repeated assertion scaffolding only where harmful duplication is dominating.
     1.0  L4    hours above 168 are invalid                                  [a=1 b=0 d=0 stub=0 h=0 hh=0 ph=1 api]
@@ -10,12 +11,14 @@ test/models/boundary_test.rb
 
 test/models/clean_test.rb
   score 0.72 STABLE  mode STABLE  ai LEAVE_ALONE  tests=2 avg=1.0 max=1.0
+  why    low-assert=0.00 branching=0.00 mocking=0.00 helper-hidden=0 harmful-dup=0 extraction=0.0 matrix=0 subject-rep=0
   HIGH   No refactor recommended; the file is structurally stable enough to leave alone.
     1.0  L4    a total sums its lines                                       [a=2 b=0 d=0 stub=0 h=0 hh=0 ph=1 api]
     1.0  L10   a card shows on the board                                    [a=2 b=0 d=0 stub=0 h=0 hh=0 ph=1 api]
 
 test/models/matrix_test.rb
   score 15.8 LOW  mode LOCAL  ai AUTO_TABLE_DRIVE  tests=5 avg=1.0 max=1.0
+  why    low-assert=1.00 branching=0.00 mocking=0.00 helper-hidden=0 harmful-dup=4 extraction=0.0 matrix=4 subject-rep=5
   HIGH   Convert repeated low-complexity tests into table-driven checks; treat this as coverage-matrix repetition, not harmful duplication.
   HIGH   Strengthen assertions in weak tests before doing structural cleanup.
     1.0  L4    5 mm has no surcharge                                        [a=1 b=0 d=0 stub=0 h=0 hh=0 ph=1 api]
@@ -26,6 +29,7 @@ test/models/matrix_test.rb
 
 test/models/smelly_test.rb
   score 48.46 HIGH  mode LOCAL  ai AUTO_REFACTOR  tests=6 avg=12.78 max=18.26
+  why    low-assert=0.83 branching=0.17 mocking=0.17 helper-hidden=1 harmful-dup=11 extraction=0.0 matrix=1 subject-rep=0
   HIGH   Convert repeated low-complexity tests into table-driven checks; treat this as coverage-matrix repetition, not harmful duplication.
   HIGH   Strengthen assertions in weak tests before doing structural cleanup.
   LOW    Be skeptical of helper extraction that only hides setup; helper-hidden complexity should still count as complexity.
@@ -39,6 +43,7 @@ test/models/smelly_test.rb
 
 test/models/spec_style_test.rb
   score 7.22 STABLE  mode STABLE  ai LEAVE_ALONE  tests=2 avg=1.0 max=1.0
+  why    low-assert=1.00 branching=0.00 mocking=0.00 helper-hidden=0 harmful-dup=6 extraction=0.0 matrix=1 subject-rep=2
   HIGH   No refactor recommended; the file is structurally stable enough to leave alone.
     1.0  L9    is zero when empty                                           [a=1 b=0 d=1 stub=0 h=0 hh=0 ph=1 api]
     1.0  L13   sums the lines                                               [a=1 b=0 d=1 stub=0 h=0 hh=0 ph=1 api]
@@ -48,6 +53,7 @@ test/models/structure_test.rb
   ERROR line 8: (setup) inside (test) at line 4
   ERROR line 17: test_twice is defined again; line 13 never runs
   score 14.17 LOW  mode LOCAL  ai AUTO_REFACTOR  tests=3 avg=1.0 max=1.0
+  why    low-assert=1.00 branching=0.00 mocking=0.00 helper-hidden=0 harmful-dup=2 extraction=0.0 matrix=0 subject-rep=0
   HIGH   Strengthen assertions in weak tests before doing structural cleanup.
     1.0  L4    an outer test                                                [a=1 b=0 d=0 stub=0 h=0 hh=0 ph=1 api]
     1.0  L13   test_twice                                                   [a=1 b=0 d=0 stub=0 h=0 hh=0 ph=1 api]

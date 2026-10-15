@@ -55,6 +55,7 @@ The comparison gives each changed file a verdict: `improved`, `worse`, `mixed` o
 ```
 test/models/smelly_test.rb
   score 48.46 HIGH  mode LOCAL  ai AUTO_REFACTOR  tests=6 avg=12.78 max=18.26
+  why    low-assert=0.83 branching=0.17 mocking=0.17 helper-hidden=1 harmful-dup=11 extraction=0.0 matrix=1 subject-rep=0
   HIGH   Strengthen assertions in weak tests before doing structural cleanup.
   LOW    Be skeptical of helper extraction that only hides setup; ...
    18.3  L59   it uses a long local helper          low-assertion-density,helper-hidden-complexity
@@ -70,7 +71,12 @@ score      Refactor pressure of the file
 level      STABLE, LOW, MEDIUM, HIGH or CRITICAL
 mode       STABLE: leave it. LOCAL: fix tests in place. SPLIT: split the file first
 ai         LEAVE_ALONE, AUTO_TABLE_DRIVE, AUTO_REFACTOR, MANUAL_SPLIT or REVIEW_FIRST
+why        The ratios and counts behind the score: tests with 1 assertion or fewer, with
+           branches, with stubs and with hidden helper lines; duplication; extraction
+           pressure; table-drive candidates; subject repetition
 HIGH/...   Recommendations, ranked by confidence, at most four
+where      The three describe blocks or classes with the most pressure, with the worst
+           test of each. Only for a file with more than one block
 tests      The SCRAP score of each test, worst first, with its smells
 EXTRACT    A group of tests where a shared helper pays for itself
 ```

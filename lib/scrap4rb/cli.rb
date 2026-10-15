@@ -41,16 +41,26 @@ module Scrap4rb
       opts
     end
 
-    def analyze_file(path, shared_asserts)
-      src = File.read(path)
+    def analyze_file(path, shared_asserts) = analyze_source(path, File.read(path), shared_asserts)
+
+    def analyze_source(path, src, shared_asserts)
       result = Prism.parse(src)
       exs = Example.from_tree(result.value, shared_assert_helpers: shared_asserts)
       summary = Summary.summarize(exs)
-      blocks = exs.group_by { _1[:describe_path] }.reject { |p, _| p.empty? }.map { |p, b| { path: p, summary: Summary.summarize(b) } }
+      blocks = exs.group_by { _1[:describe_path] }.reject { |p, _| p.empty? }.map { |p, b| { path: p, summary: Summary.summarize(b), examples: b } }
       mode = Judgment.remediation_mode(summary, blocks)
       { path:, content_hash: Digest::SHA256.hexdigest(src)[0, 16], errors: Structure.errors(result), examples: exs, summary:,
         file_score: Judgment.pressure_score(summary), level: Judgment.level(summary), mode:,
-        ai: Judgment.actionability(summary, mode), actions: Judgment.actions(summary, mode) }
+        ai: Judgment.actionability(summary, mode), actions: Judgment.actions(summary, mode), top_blocks: top_blocks(blocks) }
+    end
+
+    def top_blocks(blocks)
+      blocks.map do |b|
+        worst = b[:examples].max_by { _1[:scrap] }
+        { path: b[:path], score: Judgment.pressure_score(b[:summary]), level: Judgment.level(b[:summary]),
+          avg_scrap: b[:summary][:avg_scrap], harmful_duplication_score: b[:summary][:harmful_duplication_score],
+          worst: worst.slice(:name, :line, :scrap) }
+      end.sort_by { -_1[:score] }.first(Policy::REPORT[:top_block_count])
     end
 
     def print_report(r, verbose:)
@@ -58,14 +68,28 @@ module Scrap4rb
       puts "\n#{r[:path]}"
       r[:errors].each { puts "  #{_1}" }
       puts "  score #{r[:file_score]} #{r[:level]}  mode #{r[:mode]}  ai #{r[:ai]}  tests=#{s[:example_count]} avg=#{s[:avg_scrap]} max=#{s[:max_scrap]}"
+      puts why_line(s)
       r[:actions].each { |c, t| puts "  #{LABEL[c].ljust(6)} #{t}" }
+      r[:top_blocks].each { puts where_line(_1) } if r[:top_blocks].size > 1
       worst = r[:examples].sort_by { -_1[:scrap] }
-      worst = worst.first(5) unless verbose
+      worst = worst.first(Policy::REPORT[:top_example_count]) unless verbose
       worst.each { puts example_line(_1, verbose) }
       s[:recommended_extractions].each do |x|
         puts "  EXTRACT L#{x[:line_start]}-#{x[:line_end]} net=#{x[:net_benefit]} (I=#{x[:instances]} shared=#{x[:shared_forms]} variable=#{x[:variable_points]}): " +
              x[:examples].map { _1[:name].to_s[0, 40] }.join(" | ")
       end
+    end
+
+    def why_line(s)
+      r = Judgment.ratios(s)
+      format("  why    low-assert=%.2f branching=%.2f mocking=%.2f helper-hidden=%d harmful-dup=%d extraction=%.1f matrix=%d subject-rep=%d",
+             r[:low], r[:branching], r[:mocking], s[:helper_hidden_example_count], s[:harmful_duplication_score],
+             s[:extraction_pressure_score], s[:coverage_matrix_candidates], s[:subject_repetition_score])
+    end
+
+    def where_line(b)
+      format("  where  %s  %s %.1f  avg=%.1f dup=%d  worst: %s (%.1f)", b[:path].join(" / "), b[:level], b[:score],
+             b[:avg_scrap], b[:harmful_duplication_score], b[:worst][:name], b[:worst][:scrap])
     end
 
     def example_line(e, verbose)

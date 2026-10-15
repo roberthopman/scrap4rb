@@ -1,5 +1,6 @@
 module Scrap4rb
   module Policy
+    REPORT = { top_example_count: 5, top_block_count: 3 }.freeze
     DUPLICATION = { threshold: 0.5, matrix_max_scrap: 18, matrix_max_lines: 12, matrix_max_assertions: 1,
                     matrix_max_branches: 0, matrix_max_setup_depth: 2, matrix_max_with_redefs: 0,
                     matrix_max_temp_resources: 0, matrix_max_helper_hidden_lines: 0, matrix_max_subject_symbols: 2 }.freeze

@@ -12,6 +12,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - A `begin` with several `rescue` clauses is one branch, as a `try` is in SCRAP. Before, each clause counted 1.
 
 ### Added
+- A `why` line for each file, with the ratios and counts behind the score, as in the SCRAP report.
+- `where` lines for a file with more than one describe block or class: the three blocks with the most pressure and the worst test of each. The JSON report has them as `top_blocks`.
 - `loop do` is a branch, and `for x in` is a table branch. A `for` loop over a literal table is table-driven.
 - The setup depth follows `setup :method_name` to the body of the method.
 

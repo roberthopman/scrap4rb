@@ -1,6 +1,7 @@
 
 test/models/smelly_test.rb
   score 48.46 HIGH  mode LOCAL  ai AUTO_REFACTOR  tests=6 avg=12.78 max=18.26
+  why    low-assert=0.83 branching=0.17 mocking=0.17 helper-hidden=1 harmful-dup=11 extraction=0.0 matrix=1 subject-rep=0
   HIGH   Convert repeated low-complexity tests into table-driven checks; treat this as coverage-matrix repetition, not harmful duplication.
   HIGH   Strengthen assertions in weak tests before doing structural cleanup.
   LOW    Be skeptical of helper extraction that only hides setup; helper-hidden complexity should still count as complexity.

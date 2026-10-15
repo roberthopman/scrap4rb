@@ -276,6 +276,22 @@
         2,
         "Extract shared setup or repeated assertion scaffolding only where harmful duplication is dominating."
       ]
+    ],
+    "top_blocks": [
+      {
+        "path": [
+          "BoundaryTest"
+        ],
+        "score": 30.67,
+        "level": "MEDIUM",
+        "avg_scrap": 1.0,
+        "harmful_duplication_score": 6,
+        "worst": {
+          "name": "hours above 168 are invalid",
+          "line": 4,
+          "scrap": 1.0
+        }
+      }
     ]
   },
   {
@@ -447,6 +463,22 @@
         3,
         "No refactor recommended; the file is structurally stable enough to leave alone."
       ]
+    ],
+    "top_blocks": [
+      {
+        "path": [
+          "CleanTest"
+        ],
+        "score": 0.72,
+        "level": "STABLE",
+        "avg_scrap": 1.0,
+        "harmful_duplication_score": 0,
+        "worst": {
+          "name": "a total sums its lines",
+          "line": 4,
+          "scrap": 1.0
+        }
+      }
     ]
   },
   {
@@ -735,6 +767,22 @@
         3,
         "Strengthen assertions in weak tests before doing structural cleanup."
       ]
+    ],
+    "top_blocks": [
+      {
+        "path": [
+          "MatrixTest"
+        ],
+        "score": 15.8,
+        "level": "LOW",
+        "avg_scrap": 1.0,
+        "harmful_duplication_score": 4,
+        "worst": {
+          "name": "5 mm has no surcharge",
+          "line": 4,
+          "scrap": 1.0
+        }
+      }
     ]
   },
   {
@@ -1262,6 +1310,22 @@
         1,
         "Consider splitting this file or block by responsibility."
       ]
+    ],
+    "top_blocks": [
+      {
+        "path": [
+          "SmellyTest"
+        ],
+        "score": 48.46,
+        "level": "HIGH",
+        "avg_scrap": 12.78,
+        "harmful_duplication_score": 11,
+        "worst": {
+          "name": "it uses a long local helper",
+          "line": 59,
+          "scrap": 18.26
+        }
+      }
     ]
   },
   {
@@ -1434,6 +1498,23 @@
         3,
         "No refactor recommended; the file is structurally stable enough to leave alone."
       ]
+    ],
+    "top_blocks": [
+      {
+        "path": [
+          "Order",
+          "#total"
+        ],
+        "score": 7.22,
+        "level": "STABLE",
+        "avg_scrap": 1.0,
+        "harmful_duplication_score": 6,
+        "worst": {
+          "name": "is zero when empty",
+          "line": 9,
+          "scrap": 1.0
+        }
+      }
     ]
   },
   {
@@ -1624,6 +1705,22 @@
         3,
         "Strengthen assertions in weak tests before doing structural cleanup."
       ]
+    ],
+    "top_blocks": [
+      {
+        "path": [
+          "StructureTest"
+        ],
+        "score": 14.17,
+        "level": "LOW",
+        "avg_scrap": 1.0,
+        "harmful_duplication_score": 2,
+        "worst": {
+          "name": "an outer test",
+          "line": 4,
+          "scrap": 1.0
+        }
+      }
     ]
   }
 ]

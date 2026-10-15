@@ -1,6 +1,7 @@
 
 test/models/boundary_test.rb
   score 30.67 MEDIUM  mode LOCAL  ai AUTO_REFACTOR  tests=3 avg=1.0 max=1.0
+  why    low-assert=1.00 branching=0.00 mocking=0.00 helper-hidden=0 harmful-dup=6 extraction=31.7 matrix=0 subject-rep=3
   HIGH   Strengthen assertions in weak tests before doing structural cleanup.
   MEDIUM Extract shared setup or repeated assertion scaffolding only where harmful duplication is dominating.
     1.0  L4    hours above 168 are invalid                                
@@ -10,6 +11,7 @@ test/models/boundary_test.rb
 
 test/models/matrix_test.rb
   score 15.8 LOW  mode LOCAL  ai AUTO_TABLE_DRIVE  tests=5 avg=1.0 max=1.0
+  why    low-assert=1.00 branching=0.00 mocking=0.00 helper-hidden=0 harmful-dup=4 extraction=0.0 matrix=4 subject-rep=5
   HIGH   Convert repeated low-complexity tests into table-driven checks; treat this as coverage-matrix repetition, not harmful duplication.
   HIGH   Strengthen assertions in weak tests before doing structural cleanup.
     1.0  L4    5 mm has no surcharge                                      
@@ -20,6 +22,7 @@ test/models/matrix_test.rb
 
 test/models/smelly_test.rb
   score 47.95 HIGH  mode LOCAL  ai AUTO_REFACTOR  tests=6 avg=11.11 max=18.26
+  why    low-assert=0.83 branching=0.17 mocking=0.17 helper-hidden=1 harmful-dup=11 extraction=0.0 matrix=0 subject-rep=0
   HIGH   Strengthen assertions in weak tests before doing structural cleanup.
   LOW    Be skeptical of helper extraction that only hides setup; helper-hidden complexity should still count as complexity.
    18.3  L60   it uses a long local helper                                low-assertion-density,helper-hidden-complexity
@@ -33,6 +36,7 @@ test/models/structure_test.rb
   ERROR line 8: (setup) inside (test) at line 4
   ERROR line 17: test_twice is defined again; line 13 never runs
   score 14.17 LOW  mode LOCAL  ai AUTO_REFACTOR  tests=3 avg=1.0 max=1.0
+  why    low-assert=1.00 branching=0.00 mocking=0.00 helper-hidden=0 harmful-dup=2 extraction=0.0 matrix=0 subject-rep=0
   HIGH   Strengthen assertions in weak tests before doing structural cleanup.
     1.0  L4    an outer test                                              
     1.0  L13   test_twice                                                 
