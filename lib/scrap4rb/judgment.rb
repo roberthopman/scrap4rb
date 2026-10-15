@@ -101,7 +101,8 @@ module Scrap4rb
 
     def verdict(c)
       if c[:file_score_delta] <= -5 && c[:extraction_pressure_delta] <= 0 && c[:max_scrap_delta] <= 0 then "improved"
-      elsif c[:helper_hidden_delta].positive? && c[:extraction_pressure_delta] >= 0 && c[:case_matrix_delta] <= 0 then "worse"
+      elsif c[:helper_hidden_delta] > [c[:example_count_delta], 0].max && c[:extraction_pressure_delta] >= 0 && c[:case_matrix_delta] <= 0
+        "worse"
       elsif c[:extraction_pressure_delta].positive? || c[:max_scrap_delta].positive? || c[:file_score_delta] >= 5 then "worse"
       elsif c[:file_score_delta].zero? then "unchanged"
       else "mixed"

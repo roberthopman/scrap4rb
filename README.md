@@ -138,6 +138,7 @@ The policy numbers (weights, thresholds, levels) are SCRAP's, unchanged.
   - A test whose whole body is one context block, such as `travel_to(...) do ... end`, is unwrapped before the phase count. In Ruby that block is test context, not arrange code.
   - A call to an assertion helper defined in `test/test_helper.rb`, `test/application_system_test_case.rb`, `test/test_helpers/` or `test/support/` counts as one assertion. SCRAP only reads the spec file itself. Without this rule, every test that uses a shared assertion helper would be "no-assertions".
   - A loop over a literal hash (`{ 5 => 0, 6 => 10 }.each`) counts as table-driven, the same as a loop over an array of arrays.
+  - `--compare` does not call new tests that use a helper a helper regression. See `docs/compare-verdict.md`.
 
 ## Notes for Rails suites
 

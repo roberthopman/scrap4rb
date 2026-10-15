@@ -10,10 +10,12 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - The setup depth counts 1 for each `let`, `let!`, `subject` and instance variable in a setup block, plus 1 for a setup block with other statements. Before, it counted 1 for each statement in a setup block, and 0 for `let` and `subject`. See `docs/setup-depth.md`.
 - temp-resource-work also counts file reads and writes, directories and processes: `File`, `IO` and `Dir` calls such as `read`, `open` and `mkdir`, `IO.popen`, `Open3` and `exec`. `File.join` and `file_fixture(...).read` do not count.
 - A `begin` with several `rescue` clauses is one branch, as a `try` is in SCRAP. Before, each clause counted 1.
+- The `--compare` verdict is `worse` for hidden helper lines only when more tests have them than the number of new tests. Before, a new test that called a helper made the verdict `worse`. See `docs/compare-verdict.md`.
 
 ### Added
 - A `why` line for each file, with the ratios and counts behind the score, as in the SCRAP report.
 - `where` lines for a file with more than one describe block or class: the three blocks with the most pressure and the worst test of each. The JSON report has them as `top_blocks`.
+- `--compare` shows `example_count_delta`.
 - `loop do` is a branch, and `for x in` is a table branch. A `for` loop over a literal table is table-driven.
 - The setup depth follows `setup :method_name` to the body of the method.
 

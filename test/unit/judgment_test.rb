@@ -66,7 +66,10 @@ class JudgmentTest < Minitest::Test
     assert_equal [3, 3, 3, 2], actions.map(&:first)
   end
 
-  def verdict(**over) = J.verdict({ file_score_delta: 0, extraction_pressure_delta: 0, max_scrap_delta: 0, case_matrix_delta: 0, helper_hidden_delta: 0 }.merge(over))
+  def verdict(**over)
+    J.verdict({ file_score_delta: 0, extraction_pressure_delta: 0, max_scrap_delta: 0, case_matrix_delta: 0, helper_hidden_delta: 0,
+                example_count_delta: 0 }.merge(over))
+  end
 
   def test_a_comparison_is_improved_from_a_five_point_drop
     assert_equal "improved", verdict(file_score_delta: -5)
@@ -75,6 +78,15 @@ class JudgmentTest < Minitest::Test
 
   def test_a_comparison_is_worse_when_a_helper_only_hides_complexity
     assert_equal "worse", verdict(file_score_delta: -1, helper_hidden_delta: 1)
+  end
+
+  def test_new_tests_that_call_a_helper_are_not_a_helper_regression
+    assert_equal "mixed", verdict(file_score_delta: -1, helper_hidden_delta: 2, example_count_delta: 2)
+    assert_equal "worse", verdict(file_score_delta: -1, helper_hidden_delta: 3, example_count_delta: 2)
+  end
+
+  def test_removed_tests_without_new_helper_calls_are_not_a_helper_regression
+    assert_equal "mixed", verdict(file_score_delta: -1, helper_hidden_delta: 0, example_count_delta: -2)
   end
 
   def test_a_comparison_is_worse_from_a_five_point_rise_or_any_max_rise

@@ -116,7 +116,8 @@ module Scrap4rb
                 max_scrap_delta: (a[:max_scrap] - b[:max_scrap]).round(2),
                 extraction_pressure_delta: (a[:effective_duplication_score] - b[:effective_duplication_score]).round(2),
                 case_matrix_delta: a[:case_matrix_repetition] - b[:case_matrix_repetition],
-                helper_hidden_delta: a[:helper_hidden_example_count] - b[:helper_hidden_example_count] }
+                helper_hidden_delta: a[:helper_hidden_example_count] - b[:helper_hidden_example_count],
+                example_count_delta: a[:example_count] - b[:example_count] }
         [r[:path], cmp.merge(verdict: Judgment.verdict(cmp))]
       end
     end

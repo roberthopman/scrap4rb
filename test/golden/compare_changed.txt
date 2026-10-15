@@ -43,7 +43,7 @@ test/models/structure_test.rb
     1.0  L17   test_twice                                                 
 
 Comparison with baseline.json:
-  mixed     test/models/smelly_test.rb  file_score_delta=-0.51 max_scrap_delta=0.0 extraction_pressure_delta=0 case_matrix_delta=-1 helper_hidden_delta=0
+  mixed     test/models/smelly_test.rb  file_score_delta=-0.51 max_scrap_delta=0.0 extraction_pressure_delta=0 case_matrix_delta=-1 helper_hidden_delta=0 example_count_delta=0
 
 6 files, 21 tests, 3 structure errors
 modes:   LOCAL=4 STABLE=2
