@@ -12,6 +12,7 @@ module Scrap4rb
     TEST_CALLS = %i[test it specify].to_set
     BLOCK_CALLS = %i[describe context].to_set
     SETUP_CALLS = %i[setup before].to_set
+    LET_CALLS = %i[let let! subject].to_set
 
     extend self
 

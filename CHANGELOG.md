@@ -6,6 +6,12 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed
+- The setup depth counts 1 for each `let`, `let!`, `subject` and instance variable in a setup block, plus 1 for a setup block with other statements. Before, it counted 1 for each statement in a setup block, and 0 for `let` and `subject`. See `docs/setup-depth.md`.
+
+### Fixed
+- A bare `super` in `def setup` no longer counts as a setup statement.
+
 ## [0.1.0] - 2026-10-02
 
 ### Added

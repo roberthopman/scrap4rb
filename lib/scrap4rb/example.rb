@@ -121,8 +121,8 @@ module Scrap4rb
       ].select(&:first).map { { label: _2, penalty: _3 } }
     end
 
-    def score(name:, node:, body:, ctx:, inherited_setup:, describe_path:, table_driven: false)
-      m = combine(*body.map { analyze(_1, ctx, inherited_setup.size, Set.new) }, { table_driven: })
+    def score(name:, node:, body:, ctx:, inherited_setup:, inherited_depth:, describe_path:, table_driven: false)
+      m = combine(*body.map { analyze(_1, ctx, inherited_depth, Set.new) }, { table_driven: })
       raw_lines = lines_of(node)
       line_count = raw_lines + m[:helper_hidden_lines]
       forms = top_forms(body)
@@ -159,29 +159,40 @@ module Scrap4rb
       }
     end
 
-    def setup_forms(scope_body)
-      scope_body.flat_map do |n|
-        if bare_call?(n) && SETUP_CALLS.include?(n.name) && n.block.is_a?(Prism::BlockNode) then block_body(n)
-        elsif n.is_a?(Prism::DefNode) && n.name == :setup then statements(n.body).reject { bare_call?(_1) && _1.name == :super }
-        else []
-        end
+    def setup_body(node)
+      if bare_call?(node) && SETUP_CALLS.include?(node.name) && node.block.is_a?(Prism::BlockNode) then block_body(node)
+      elsif node.is_a?(Prism::DefNode) && node.name == :setup
+        statements(node.body).reject { _1.is_a?(Prism::ForwardingSuperNode) || _1.is_a?(Prism::SuperNode) }
+      end
+    end
+
+    def setup_forms(scope_body) = scope_body.flat_map { setup_body(_1) || [] }
+
+    def setup_depth(scope_body)
+      scope_body.sum do |n|
+        next 1 if bare_call?(n) && LET_CALLS.include?(n.name) && n.block
+        bindings, actions = (setup_body(n) || []).partition { _1.is_a?(Prism::InstanceVariableWriteNode) }
+        bindings.size + (actions.empty? ? 0 : 1)
       end
     end
 
     def test_body(node) = node.is_a?(Prism::DefNode) ? statements(node.body) : block_body(node)
 
-    def collect(forms, ctx, path = [], inherited = [], out = [])
+    def collect(forms, ctx, path = [], inherited = [], inherited_depth = 0, out = [])
       setup = inherited + setup_forms(forms)
+      depth = inherited_depth + setup_depth(forms)
       forms.each do |f|
         if (name, body = scope_children(f))
-          collect(body, ctx, path + [name], setup, out)
+          collect(body, ctx, path + [name], setup, depth, out)
         elsif test_node?(f)
-          out << score(name: test_name(f), node: f, body: test_body(f), ctx:, inherited_setup: setup, describe_path: path)
+          out << score(name: test_name(f), node: f, body: test_body(f), ctx:, inherited_setup: setup,
+                       inherited_depth: depth, describe_path: path)
         elsif (inner = dynamic_test_in_loop(f))
           out << score(name: dynamic_test_name(inner), node: f, body: block_body(inner), ctx:, inherited_setup: setup,
-                       describe_path: path, table_driven: true)
+                       inherited_depth: depth, describe_path: path, table_driven: true)
         elsif dynamic_test?(f)
-          out << score(name: dynamic_test_name(f), node: f, body: block_body(f), ctx:, inherited_setup: setup, describe_path: path)
+          out << score(name: dynamic_test_name(f), node: f, body: block_body(f), ctx:, inherited_setup: setup,
+                       inherited_depth: depth, describe_path: path)
         end
       end
       out

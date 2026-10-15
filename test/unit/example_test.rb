@@ -108,6 +108,32 @@ class ExampleTest < Minitest::Test
     assert(exs.values.all? { _1[:setup_signatures].size == 1 })
   end
 
+  def test_setup_depth_counts_each_instance_variable_and_one_level_for_the_actions_of_a_setup_block
+    depth = ->(setup) { examples("setup do\n#{setup}\nend\ntest \"x\" do\nassert @a\nend")["x"][:setup_depth] }
+    assert_equal 0, depth.("")
+    assert_equal 2, depth.("@a = 1\n@b = 2")
+    assert_equal 1, depth.("sign_in a\nvisit b\nclick c")
+    assert_equal 3, depth.("@a = 1\n@b = 2\nsign_in @a\nvisit b")
+  end
+
+  def test_setup_depth_ignores_super_in_def_setup
+    exs = examples("def setup\nsuper\n@a = 1\nend\ndef test_x\nassert @a\nend")
+    assert_equal 1, exs["test_x"][:setup_depth]
+  end
+
+  def test_setup_depth_counts_each_let_and_subject_of_a_spec
+    src = "describe Order do\n  let(:a) { 1 }\n  let!(:b) { 2 }\n  subject { 3 }\n  it \"x\" do\n    _(a).must_equal 1\n  end\nend\n"
+    ex = Scrap4rb::Example.from_source(src, shared_assert_helpers: Set.new).first
+    assert_equal 3, ex[:setup_depth]
+  end
+
+  def test_setup_depth_adds_up_over_nested_describe_blocks
+    src = "describe Order do\n  let(:a) { 1 }\n  describe \"open\" do\n    before do\n      @b = 2\n    end\n" \
+          "    it \"x\" do\n      _(a).must_equal 1\n    end\n  end\nend\n"
+    ex = Scrap4rb::Example.from_source(src, shared_assert_helpers: Set.new).first
+    assert_equal 2, ex[:setup_depth]
+  end
+
   def test_def_test_methods_and_spec_it_blocks_are_collected_with_their_describe_path
     src = "describe Order do\n  it \"is empty\" do\n    _(1).must_equal 1\n  end\nend\n" \
           "class T < Minitest::Test\n  def test_plain\n    assert true\n  end\nend\n"
