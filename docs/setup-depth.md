@@ -42,7 +42,7 @@ In speclj, this is two `with` forms and one `before`, so the setup depth is 3.
 scrap4rb counts the setup depth of a test class or a `describe` block as follows:
 
   - Each `let`, `let!` and `subject` counts 1.
-  - In each `setup` block, `before` block and `def setup`, each instance variable assignment counts 1.
+  - In each `setup` block, `before` block and `def setup`, each instance variable assignment counts 1. For `setup :build_order`, scrap4rb reads the body of the method `build_order`.
   - A setup block that also has other statements counts 1 more. A `super` call is not a statement for this rule.
 
 A nested `describe` block adds its own setup depth to the setup depth of its parent. Inside a test, a context block (`travel_to`, `with_*`, `stub` with a block) adds 1, as a nested `with-redefs` does in SCRAP.

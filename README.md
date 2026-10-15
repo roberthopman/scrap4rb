@@ -95,7 +95,7 @@ multiple-phases            assert, act, assert again                        5
 high-mocking               more than 3 stubs or mocks                       4
 large-example              more than 20 lines                               4
 helper-hidden-complexity   more than 8 lines hidden in local helpers        4
-temp-resource-work         temporary files, threads or shell calls          3
+temp-resource-work         files, directories, threads or processes         3
 literal-heavy-setup        a string over 5 lines, a hash or array over 10   3
 ```
 
@@ -114,13 +114,15 @@ SCRAP (speclj)          scrap4rb (Minitest)
 --------------          -------------------
 describe, context       a test class, or a minitest/spec describe block
 it                      test "..." do, def test_*, it "..." do, define_method(:"test_...")
-before, with            setup blocks and def setup, inherited by every test in the class
+before, with            setup blocks, setup :method and def setup, let and subject,
+                        inherited by every test in the class (see docs/setup-depth.md)
 let, binding            travel_to, freeze_time, within, using_session,
                         perform_enqueued_jobs, with_*, and stub with a block
 with-redefs             stub, stub_request, any_instance, expects, stubs, Minitest::Mock.new
 should*                 assert*, refute*, must_*, wont_*
-doseq, for, every?      each, each_with_index, map, times, all?, ...
-if, when, cond, and     if, unless, case, while, until, &&, ||, rescue
+doseq, for, every?      for, each, each_with_index, map, times, all?, ...
+if, when, cond, and     if, unless, case, while, until, &&, ||, rescue modifier
+loop, try               loop, begin/rescue (one per begin)
 ```
 
 The policy numbers (weights, thresholds, levels) are SCRAP's, unchanged.

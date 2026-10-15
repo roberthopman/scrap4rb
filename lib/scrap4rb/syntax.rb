@@ -8,7 +8,8 @@ module Scrap4rb
     STUB_CALLS = %i[stub stub_request any_instance expects stubs stub_const].to_set
     TABLE_CALLS = %i[each each_with_index each_pair each_with_object each_slice map flat_map times all? any? none?].to_set
     BRANCH_NODES = [Prism::IfNode, Prism::UnlessNode, Prism::CaseNode, Prism::CaseMatchNode, Prism::WhileNode,
-                    Prism::UntilNode, Prism::AndNode, Prism::OrNode, Prism::RescueNode, Prism::RescueModifierNode].freeze
+                    Prism::UntilNode, Prism::AndNode, Prism::OrNode, Prism::RescueModifierNode].freeze
+    FILE_CALLS = %i[read readlines binread write binwrite open foreach popen mkdir].to_set
     TEST_CALLS = %i[test it specify].to_set
     BLOCK_CALLS = %i[describe context].to_set
     SETUP_CALLS = %i[setup before].to_set
@@ -45,6 +46,13 @@ module Scrap4rb
 
     def assertion?(node) = call?(node) && ASSERTION.match?(node.name)
 
+    def branch?(node)
+      BRANCH_NODES.any? { node.is_a?(_1) } || (node.is_a?(Prism::BeginNode) && !node.rescue_clause.nil?) ||
+        (bare_call?(node) && node.name == :loop && !node.block.nil?)
+    end
+
+    def table_branch?(node) = node.is_a?(Prism::ForNode) || (call?(node) && TABLE_CALLS.include?(node.name) && !node.block.nil?)
+
     def table_literal?(node)
       case node
       when Prism::ArrayNode then node.elements.size >= 2 && node.elements.all? { _1.is_a?(Prism::ArrayNode) || _1.is_a?(Prism::HashNode) }
@@ -54,6 +62,7 @@ module Scrap4rb
     end
 
     def table_driven_form?(node)
+      return table_literal?(node.collection) if node.is_a?(Prism::ForNode)
       return false unless call?(node)
       (TABLE_CALLS.include?(node.name) && node.block && table_literal?(node.receiver)) ||
         (assertion?(node) && (node.arguments&.arguments || []).any? { table_literal?(_1) })
@@ -63,10 +72,9 @@ module Scrap4rb
       return true if node.is_a?(Prism::XStringNode) || node.is_a?(Prism::InterpolatedXStringNode)
       return false unless call?(node)
       recv = node.receiver&.slice
-      %i[mktmpdir tmpdir system spawn fork].include?(node.name) ||
-        recv == "Tempfile" || recv == "Thread" ||
-        (recv == "File" && %i[write binwrite].include?(node.name)) ||
-        (recv == "FileUtils")
+      %i[mktmpdir tmpdir system spawn fork exec].include?(node.name) ||
+        %w[Tempfile Thread FileUtils Open3].include?(recv) ||
+        (%w[File IO Dir].include?(recv) && FILE_CALLS.include?(node.name))
     end
 
     def large_literal?(node)
@@ -86,7 +94,7 @@ module Scrap4rb
     end
 
     def control_call?(node)
-      assertion?(node) || context_head?(node) || stub_call?(node) || TABLE_CALLS.include?(node.name) ||
+      assertion?(node) || context_head?(node) || stub_call?(node) || TABLE_CALLS.include?(node.name) || node.name == :loop ||
         TEST_CALLS.include?(node.name) || SETUP_CALLS.include?(node.name) || !node.name.match?(/\A[a-z_]/i)
     end
 

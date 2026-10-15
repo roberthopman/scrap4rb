@@ -92,6 +92,22 @@ class ExampleTest < Minitest::Test
     refute_includes one("assert ok")[:smells], "temp-resource-work"
   end
 
+  def test_file_reads_directories_and_processes_are_temp_resource_work
+    temp = ->(code) { one("#{code}\nassert ok")[:temp_resources] }
+    assert_equal 1, temp.("File.read(\"a\")")
+    assert_equal 1, temp.("IO.readlines(\"a\")")
+    assert_equal 1, temp.("Dir.mkdir(\"d\")")
+    assert_equal 1, temp.("IO.popen(\"ls\")")
+    assert_equal 1, temp.("Open3.capture2(\"ls\")")
+    assert_equal 1, temp.("exec(\"ls\")")
+  end
+
+  def test_path_helpers_and_rails_file_fixtures_are_not_temp_resource_work
+    temp = ->(code) { one("#{code}\nassert ok")[:temp_resources] }
+    assert_equal 0, temp.("File.join(\"a\", \"b\")")
+    assert_equal 0, temp.("file_fixture(\"a.json\").read")
+  end
+
   def test_a_loop_over_a_literal_table_is_table_driven_but_a_loop_over_a_variable_is_not
     assert one("[[5, 0], [6, 10]].each { |mm, eur| assert_equal eur, f(mm) }")[:table_driven]
     assert one("{ 5 => 0, 6 => 10 }.each { |mm, eur| assert_equal eur, f(mm) }")[:table_driven]
@@ -99,8 +115,27 @@ class ExampleTest < Minitest::Test
     refute one("[5, 6].each { |mm| assert f(mm) }")[:table_driven]
   end
 
+  def test_a_for_loop_is_a_table_branch_and_table_driven_over_a_literal_table
+    over_table = one("for mm, eur in [[5, 0], [6, 10]]\nassert_equal eur, f(mm)\nend")
+    over_variable = one("for mm, eur in cases\nassert_equal eur, f(mm)\nend")
+    assert_equal [1, 1], [over_table[:branches], over_variable[:branches]]
+    assert over_table[:table_driven]
+    refute over_variable[:table_driven]
+  end
+
   def test_branches_count_if_unless_case_and_boolean_operators
     assert_equal 4, one("if a then b end\nc unless d\ncase e when 1 then f end\nassert(g && h)")[:branches]
+  end
+
+  def test_a_loop_block_is_one_branch_and_not_a_subject
+    ex = one("loop do\nbreak\nend\nassert ok")
+    assert_equal 1, ex[:branches]
+    refute_includes ex[:subject_symbols], "loop"
+  end
+
+  def test_a_begin_with_several_rescue_clauses_is_one_branch
+    assert_equal 1, one("begin\nrun\nrescue ArgumentError\na\nrescue KeyError\nb\nend\nassert ok")[:branches]
+    assert_equal 1, one("run rescue nil\nassert ok")[:branches]
   end
 
   def test_setup_blocks_are_inherited_by_every_test_in_the_class
@@ -114,6 +149,11 @@ class ExampleTest < Minitest::Test
     assert_equal 2, depth.("@a = 1\n@b = 2")
     assert_equal 1, depth.("sign_in a\nvisit b\nclick c")
     assert_equal 3, depth.("@a = 1\n@b = 2\nsign_in @a\nvisit b")
+  end
+
+  def test_setup_depth_follows_a_setup_callback_to_its_method
+    exs = examples("setup :build\ntest \"x\" do\nassert @a\nend", helpers: "def build\n@a = 1\n@b = 2\nsign_in @a\nend")
+    assert_equal 3, exs["x"][:setup_depth]
   end
 
   def test_setup_depth_ignores_super_in_def_setup

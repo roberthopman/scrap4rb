@@ -61,8 +61,8 @@ module Scrap4rb
       expanded = helper && !stack.include?(node.name) ? expand(ctx, node.name, stack | [node.name], depth) : nil
       local = {
         assertions: assertion?(node) || shared_assert ? 1 : 0,
-        branches: BRANCH_NODES.any? { node.is_a?(_1) } ? 1 : 0,
-        table_branches: call?(node) && TABLE_CALLS.include?(node.name) && node.block ? 1 : 0,
+        branches: branch?(node) ? 1 : 0,
+        table_branches: table_branch?(node) ? 1 : 0,
         with_redefs: stub_call?(node) ? 1 : 0,
         helper_calls: helper ? 1 : 0,
         temp_resources: temp_resource?(node) ? 1 : 0,
@@ -159,19 +159,21 @@ module Scrap4rb
       }
     end
 
-    def setup_body(node)
+    def setup_body(node, helpers)
       if bare_call?(node) && SETUP_CALLS.include?(node.name) && node.block.is_a?(Prism::BlockNode) then block_body(node)
+      elsif bare_call?(node) && SETUP_CALLS.include?(node.name) && node.block.nil? && node.arguments
+        node.arguments.arguments.grep(Prism::SymbolNode).flat_map { helpers.fetch(_1.unescaped.to_sym, []) }
       elsif node.is_a?(Prism::DefNode) && node.name == :setup
         statements(node.body).reject { _1.is_a?(Prism::ForwardingSuperNode) || _1.is_a?(Prism::SuperNode) }
       end
     end
 
-    def setup_forms(scope_body) = scope_body.flat_map { setup_body(_1) || [] }
+    def setup_forms(scope_body, helpers) = scope_body.flat_map { setup_body(_1, helpers) || [] }
 
-    def setup_depth(scope_body)
+    def setup_depth(scope_body, helpers)
       scope_body.sum do |n|
         next 1 if bare_call?(n) && LET_CALLS.include?(n.name) && n.block
-        bindings, actions = (setup_body(n) || []).partition { _1.is_a?(Prism::InstanceVariableWriteNode) }
+        bindings, actions = (setup_body(n, helpers) || []).partition { _1.is_a?(Prism::InstanceVariableWriteNode) }
         bindings.size + (actions.empty? ? 0 : 1)
       end
     end
@@ -179,8 +181,8 @@ module Scrap4rb
     def test_body(node) = node.is_a?(Prism::DefNode) ? statements(node.body) : block_body(node)
 
     def collect(forms, ctx, path = [], inherited = [], inherited_depth = 0, out = [])
-      setup = inherited + setup_forms(forms)
-      depth = inherited_depth + setup_depth(forms)
+      setup = inherited + setup_forms(forms, ctx.helpers)
+      depth = inherited_depth + setup_depth(forms, ctx.helpers)
       forms.each do |f|
         if (name, body = scope_children(f))
           collect(body, ctx, path + [name], setup, depth, out)
