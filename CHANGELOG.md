@@ -6,6 +6,12 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-10-16
+
+### Fixed
+- The README tells you to run scrap4rb from the project root when you run it from a checkout. From the scrap4rb folder, scrap4rb does not find the shared assertion helpers of the project, and a test that uses one reads as `no-assertions`.
+- The README lists all structure errors, limits the 35% low-assertion rule to files with more than two tests, and lists three more deviations from SCRAP.
+
 ## [0.2.0] - 2026-10-15
 
 ### Changed
@@ -37,6 +43,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   `describe`/`it` blocks. A `define_method` test inside a loop over a table
   (`CASES.each`) is one table-driven test that spans the loop.
 
-[Unreleased]: https://github.com/roberthopman/scrap4rb/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/roberthopman/scrap4rb/compare/v0.2.1...HEAD
+[0.2.1]: https://github.com/roberthopman/scrap4rb/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/roberthopman/scrap4rb/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/roberthopman/scrap4rb/releases/tag/v0.1.0
