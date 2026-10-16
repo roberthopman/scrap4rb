@@ -22,10 +22,11 @@ Or add it to a Gemfile:
 gem "scrap4rb", group: :development
 ```
 
-From a checkout you can run it without installing:
+From a checkout you can run it without installing. Run it from the project root, because scrap4rb finds the shared assertion helpers from the current directory:
 
 ```bash
-ruby -Ilib exe/scrap4rb path/to/project/test
+cd path/to/project
+ruby -I path/to/scrap4rb/lib path/to/scrap4rb/exe/scrap4rb
 ```
 
 ## Usage
@@ -51,6 +52,8 @@ scrap4rb --compare tmp/scrap.json
 The comparison gives each changed file a verdict: `improved`, `worse`, `mixed` or `unchanged`. When the verdict is `worse`, revert the refactor or simplify the helpers.
 
 ## Output
+
+An example, with some lines left out and some lines shortened:
 
 ```
 test/models/smelly_test.rb
@@ -85,8 +88,8 @@ EXTRACT    A group of tests where a shared helper pays for itself
 
 Structure errors:
 
-  - a `test` inside a `test`
-  - a `setup`, `teardown`, `describe`, `context` or `class` inside a test
+  - a `test`, `it` or `specify` inside a test
+  - a `setup`, `teardown`, `before`, `after`, `describe`, `context`, `def setup` or `class` inside a test
   - a second `def test_x` with the same name in one class (the first one never runs)
   - parse errors
 
@@ -136,16 +139,18 @@ The policy numbers (weights, thresholds, levels) are SCRAP's, unchanged.
 ## Deviations from SCRAP
 
   - A test whose whole body is one context block, such as `travel_to(...) do ... end`, is unwrapped before the phase count. In Ruby that block is test context, not arrange code.
-  - A call to an assertion helper defined in `test/test_helper.rb`, `test/application_system_test_case.rb`, `test/test_helpers/` or `test/support/` counts as one assertion. SCRAP only reads the spec file itself. Without this rule, every test that uses a shared assertion helper would be "no-assertions".
+  - A call to an assertion helper defined in `test/test_helper.rb`, `test/application_system_test_case.rb`, `test/test_helpers/` or `test/support/` counts as one assertion. scrap4rb finds these files from the current directory. SCRAP only reads the spec file itself. Without this rule, every test that uses a shared assertion helper would be "no-assertions".
   - A loop over a literal hash (`{ 5 => 0, 6 => 10 }.each`) counts as table-driven, the same as a loop over an array of arrays.
   - `--compare` does not call new tests that use a helper a helper regression. See `docs/compare-verdict.md`.
+  - The `where` lines show only for a file with more than one describe block or class. SCRAP shows them for each file.
+  - A `describe` inside a `describe` is not a structure error, because minitest/spec nests them. A second test with the same name is a structure error. SCRAP has no such check.
 
 ## Notes for Rails suites
 
 Two SCRAP rules can disagree with common Rails practice. Decide for your own suite.
 
   - **multiple-phases**: a system test that asserts after each click (to prove that the page changed before the next step) has several phases, and SCRAP gives it 5 points.
-  - **Low-assertion files**: a file is not STABLE when more than 35% of its tests have one assertion or fewer. A suite with "one behavior, one assertion" tests will have many LOCAL files for this reason only.
+  - **Low-assertion files**: a file with more than two tests is not STABLE when more than 35% of its tests have one assertion or fewer. A suite with "one behavior, one assertion" tests will have many LOCAL files for this reason only.
 
 ## Development
 
@@ -161,7 +166,7 @@ The golden tests run the executable against the fixture suite in `test/fixtures/
 
 SCRAP is by Robert C. Martin (Uncle Bob): [github.com/unclebob/scrap](https://github.com/unclebob/scrap). The algorithm, the metrics, the smells and the policy numbers in scrap4rb come from SCRAP. scrap4rb is an independent Ruby implementation. It contains no SCRAP source code.
 
-scrap4rb 0.1.0 follows SCRAP at commit [`f793b28`](https://github.com/unclebob/scrap/tree/f793b28906d3c60e30b128e1ec08df6269a72b13) (2026-03-17). When SCRAP changes its rules or numbers, scrap4rb can differ until it follows again.
+scrap4rb follows SCRAP at commit [`f793b28`](https://github.com/unclebob/scrap/tree/f793b28906d3c60e30b128e1ec08df6269a72b13) (2026-03-17). When SCRAP changes its rules or numbers, scrap4rb can differ until it follows again.
 
 Related tools by the same author: [crap4clj](https://github.com/unclebob/crap4clj), [crap4java](https://github.com/unclebob/crap4java), [crap4go](https://github.com/unclebob/crap4go) and [clj-mutate](https://github.com/unclebob/clj-mutate).
 
